@@ -46,6 +46,10 @@
 		"typecheck": "tsgo --noEmit",
 		"watch": "tsdown --watch"
 	},
+	"dependencies": {
+		"remark-mdc": "^3.8.1",
+		"unified": "^11.0.5"
+	},
 	"devDependencies": {
 		"@antfu/ni": "^27.0.1",
 		"@so1ve/eslint-config": "^3.11.4",
@@ -64,9 +68,5 @@
 	},
 	"peerDependencies": {
 		"prettier": "~3.6.2"
-	},
-	"dependencies": {
-		"remark-mdc": "^3.8.1",
-		"unified": "^11.0.5"
 	}
 }

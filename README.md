@@ -21,3 +21,5 @@ $ pnpm add pkg-name
 ## 📝 License
 
 [MIT](./LICENSE). Made with ❤️ by [Ray](https://github.com/so1ve)
+
+[link](https://nuxtjs.org){target="\_blank"}

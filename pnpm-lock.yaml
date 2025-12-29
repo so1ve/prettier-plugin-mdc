@@ -8,9 +8,15 @@ importers:
 
   .:
     dependencies:
+      '@types/mdast':
+        specifier: ^4.0.4
+        version: 4.0.4
       '@types/unist':
         specifier: ^3.0.3
         version: 3.0.3
+      mdast-util-to-markdown:
+        specifier: ^2.1.2
+        version: 2.1.2
       remark-gfm:
         specifier: ^4.0.1
         version: 4.0.1
@@ -26,6 +32,9 @@ importers:
       remark-stringify:
         specifier: ^11.0.0
         version: 11.0.0
+      stringify-entities:
+        specifier: ^4.0.4
+        version: 4.0.4
       unified:
         specifier: ^11.0.5
         version: 11.0.5

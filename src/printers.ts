@@ -1,12 +1,20 @@
 import type { Printer } from "prettier";
 import * as markdown from "prettier/plugins/markdown";
-import remarkGfm from "remark-gfm";
-import remarkMdc from "remark-mdc";
-import remarkStringify from "remark-stringify";
-import { unified } from "unified";
 import type { Node } from "unist";
 
-import { shouldProcess } from "./utils";
+import { AST_FORMAT } from "./constants";
+import {
+	isComponentContainerSectionNode,
+	isContainerComponentNode,
+	isTextComponentNode,
+} from "./is";
+import {
+	printAttributes,
+	printComponentContainerSection,
+	printContainerComponent,
+	printTextComponent,
+} from "./print";
+import { hasInlineAttribute } from "./utils";
 import type { MDCNodeTypes } from "./visitor-keys";
 import { mdcNodeTypes, visitorKeys } from "./visitor-keys";
 
@@ -14,7 +22,7 @@ import { mdcNodeTypes, visitorKeys } from "./visitor-keys";
 const mdastPrinter: Printer = markdown.printers.mdast;
 
 export const printers = {
-	mdc: {
+	[AST_FORMAT]: {
 		...mdastPrinter,
 		getVisitorKeys(node, nonTraversableKeys) {
 			if (mdcNodeTypes.includes(node.type)) {
@@ -26,25 +34,27 @@ export const printers = {
 		print(path, options, print, args) {
 			const { node } = path;
 
-			const stream = unified()
-				.use(remarkGfm)
-				.use(remarkMdc)
-				.use(remarkStringify, {
-					bullet: "-",
-					emphasis: "_",
-					listItemIndent: "one",
-					fence: "`",
-					fences: true,
-					rule: "-",
-				});
+			if (hasInlineAttribute(node)) {
+				// Let the markdown printer handle the node first, then add attributes
+				const printed = mdastPrinter.print(path, options, print, args);
 
-			if (shouldProcess(node)) {
-				// TODO: implement proper printing
-				// return stream.stringify(node as any);
-				return options.originalText.slice(
-					node.position!.start.offset,
-					node.position!.end.offset,
-				);
+				return [printed, printAttributes(node)];
+			}
+
+			if (mdcNodeTypes.includes(node.type)) {
+				if (isTextComponentNode(node)) {
+					return printTextComponent(path, print);
+				} else if (isContainerComponentNode(node)) {
+					return printContainerComponent(path, print);
+				} else if (isComponentContainerSectionNode(node)) {
+					return printComponentContainerSection(path, print);
+				} else {
+					// Fallback to original text
+					return options.originalText.slice(
+						node.position!.start.offset,
+						node.position!.end.offset,
+					);
+				}
 			}
 
 			return mdastPrinter.print(path, options, print, args);

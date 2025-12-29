@@ -7,10 +7,12 @@ import remarkParse from "remark-parse";
 import { unified } from "unified";
 import type { Node } from "unist";
 
+import { AST_FORMAT } from "./constants";
+
 export const parsers = {
-	mdc: {
+	[AST_FORMAT]: {
 		...markdown.parsers.markdown,
-		astFormat: "mdc",
+		astFormat: AST_FORMAT,
 		parse: async (text) => {
 			const processor = unified()
 				.use(remarkParse, {

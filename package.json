@@ -47,12 +47,15 @@
 		"watch": "tsdown --watch"
 	},
 	"dependencies": {
+		"@types/mdast": "^4.0.4",
 		"@types/unist": "^3.0.3",
+		"mdast-util-to-markdown": "^2.1.2",
 		"remark-gfm": "^4.0.1",
 		"remark-math": "^6.0.0",
 		"remark-mdc": "^3.8.1",
 		"remark-parse": "^11.0.0",
 		"remark-stringify": "^11.0.0",
+		"stringify-entities": "^4.0.4",
 		"unified": "^11.0.5"
 	},
 	"devDependencies": {

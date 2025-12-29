@@ -1,3 +1,7 @@
+ignoreWorkspaceRootCheck: true
+gitChecks: false
+shellEmulator: true
+
 onlyBuiltDependencies:
   - esbuild
   - unrs-resolver

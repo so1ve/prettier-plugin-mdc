@@ -1,6 +1,8 @@
 import { format } from "prettier";
 import { expect, it } from "vitest";
 
+import { AST_FORMAT } from "../src/constants";
+
 interface TestCase {
 	markdown: string;
 	expected?: string;
@@ -12,7 +14,7 @@ export function runTests(cases: Record<string, TestCase>) {
 			const formatted = await format(input.markdown, {
 				plugins: ["./dist/index.js"],
 				filepath: "test.md",
-				parser: "mdc",
+				parser: AST_FORMAT,
 			});
 
 			if (input.expected) {

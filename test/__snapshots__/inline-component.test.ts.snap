@@ -1,12 +1,12 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`inline-component > formats case #binding 1`] = `
-":binding{value="$doc.variable" defaultValue='undefined'}
+"{{ $doc.variable }}
 "
 `;
 
 exports[`inline-component > formats case #bindingWithDefault 1`] = `
-":binding{value="$doc.variable" defaultValue="mdc"}
+"{{ $doc.variable || "mdc" }}
 "
 `;
 

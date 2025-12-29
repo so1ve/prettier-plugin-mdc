@@ -1,4 +1,4 @@
-import type { Doc } from "prettier";
+import type { Doc, Options } from "prettier";
 import { doc } from "prettier";
 
 import type {
@@ -62,13 +62,35 @@ export function printAttributes(node: NodeWithAttributes): string {
 }
 
 /**
+ * Print binding component: {{ value }} or {{ value || 'default' }}
+ */
+function printBinding(node: TextComponentNode, options: Options): Doc[] {
+	const value = node.attributes?.value ?? "";
+	const defaultValue = node.attributes?.defaultValue;
+	const quote = options.singleQuote ? "'" : '"';
+
+	if (defaultValue !== undefined && defaultValue !== "undefined") {
+		return [`{{ ${value} || ${quote}${defaultValue}${quote} }}`];
+	}
+
+	return [`{{ ${value} }}`];
+}
+
+/**
  * Print inline text component: :name[content]{attrs}
  */
 export function printTextComponent(
 	path: AstPath<TextComponentNode>,
 	print: PrintFn,
+	options: Options,
 ): Doc[] {
 	const { node } = path;
+
+	// Special handling for binding component
+	if (node.name === "binding") {
+		return printBinding(node, options);
+	}
+
 	const parts: Doc[] = [`:${node.name}`];
 
 	// Print children inside brackets if any

@@ -48,7 +48,11 @@ export const printers: Record<typeof AST_FORMAT, Printer<Node>> = {
 			}
 
 			if (isTextComponentNode(node)) {
-				return printTextComponent(path as AstPath<TextComponentNode>, print);
+				return printTextComponent(
+					path as AstPath<TextComponentNode>,
+					print,
+					options,
+				);
 			} else if (isContainerComponentNode(node)) {
 				return printContainerComponent(
 					path as AstPath<ContainerComponentNode>,

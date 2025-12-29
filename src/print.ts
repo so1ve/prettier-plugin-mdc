@@ -234,9 +234,31 @@ export function printContainerComponent(
 
   parts.push(hardline);
 
-  parts.push(...printRawData(node.rawData, options));
+  const rawDataDoc = printRawData(node.rawData, options);
+  parts.push(...rawDataDoc);
 
   if (node.children && node.children.length > 0) {
+    // Check if there's a blank line between rawData and first child in original input
+    if (rawDataDoc.length > 0 && node.rawData) {
+      const componentStartLine = node.position?.start.line ?? 0;
+      // rawData format: "\n<content>\n---"
+      // Count newlines in rawData to determine where it ends
+      const rawDataNewlines = (node.rawData.match(/\n/g) ?? []).length;
+      // rawData block: starts at line after component opening, includes opening --- and closing ---
+      // Opening --- is on componentStartLine + 1
+      // rawData ends at componentStartLine + 1 + rawDataNewlines
+      const rawDataEndLine = componentStartLine + 1 + rawDataNewlines;
+
+      const firstChild = node.children[0] as {
+        position?: { start: { line: number } };
+      };
+      const firstChildLine = firstChild.position?.start.line ?? 0;
+
+      // If first child starts more than 1 line after rawData ends, there's a blank line
+      if (firstChildLine > rawDataEndLine + 1) {
+        parts.push(hardline);
+      }
+    }
     const childDocs = mapChildren(path, print);
     parts.push(join(hardline, childDocs));
     parts.push(hardline);

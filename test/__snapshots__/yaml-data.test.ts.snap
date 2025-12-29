@@ -1,0 +1,12 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`frontmatter > formats case "newline" 1`] = `
+"::component
+---
+asf: a
+---
+
+foo
+::
+"
+`;

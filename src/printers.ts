@@ -57,6 +57,7 @@ export const printers: Record<typeof AST_FORMAT, Printer<Node>> = {
 				return printContainerComponent(
 					path as AstPath<ContainerComponentNode>,
 					print,
+					options,
 				);
 			} else if (isComponentContainerSectionNode(node)) {
 				return printComponentContainerSection(

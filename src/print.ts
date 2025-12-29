@@ -130,7 +130,7 @@ function getContainerDepth(path: AstPath): number {
  * Print YAML front matter from rawData
  * rawData format: "\nkey: value\n---"
  */
-function printRawData(rawData: string | undefined): Doc[] {
+function printRawData(rawData: string | undefined, options: Options): Doc[] {
 	if (!rawData) {
 		return [];
 	}
@@ -142,7 +142,7 @@ function printRawData(rawData: string | undefined): Doc[] {
 		return [];
 	}
 
-	content = formatYaml(content);
+	content = formatYaml(content, options);
 
 	// Split into lines and join with hardline so prettier can handle indentation
 	const lines = content.split("\n");
@@ -156,6 +156,7 @@ function printRawData(rawData: string | undefined): Doc[] {
 export function printContainerComponent(
 	path: AstPath<ContainerComponentNode>,
 	print: PrintFn,
+	options: Options,
 ): Doc[] {
 	const { node } = path;
 	const depth = getContainerDepth(path);
@@ -171,7 +172,7 @@ export function printContainerComponent(
 
 	parts.push(hardline);
 
-	parts.push(...printRawData(node.rawData));
+	parts.push(...printRawData(node.rawData, options));
 
 	if (node.children && node.children.length > 0) {
 		const childDocs = mapChildren(path, print);

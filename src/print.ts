@@ -9,6 +9,7 @@ import type {
 	PrintFn,
 	TextComponentNode,
 } from "./types";
+import { escapeQuotes } from "./utils";
 import { formatYaml } from "./yaml";
 
 const { hardline, join } = doc.builders;
@@ -70,7 +71,9 @@ function printBinding(node: TextComponentNode, options: Options): Doc[] {
 	const quote = options.singleQuote ? "'" : '"';
 
 	if (defaultValue !== undefined && defaultValue !== "undefined") {
-		return [`{{ ${value} || ${quote}${defaultValue}${quote} }}`];
+		const escaped = escapeQuotes(String(defaultValue), quote);
+
+		return [`{{ ${value} || ${quote}${escaped}${quote} }}`];
 	}
 
 	return [`{{ ${value} }}`];

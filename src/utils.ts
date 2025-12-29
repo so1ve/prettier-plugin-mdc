@@ -17,3 +17,6 @@ export const hasInlineAttribute = (node: Node): node is NodeWithAttributes =>
 
 export const shouldProcess = (node: Node): boolean =>
 	hasInlineAttribute(node) || mdcNodeTypes.includes(node.type);
+
+export const escapeQuotes = (value: string, quote: string): string =>
+	value.replace(new RegExp(quote, "g"), `\\${quote}`);

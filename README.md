@@ -4,13 +4,13 @@
 
 A [Prettier](https://prettier.io/) plugin for formatting [MDC (Markdown Components)](https://content.nuxt.com/docs/files/markdown#mdc-syntax) syntax used in [Nuxt Content](https://content.nuxt.com/).
 
-## Features
+## 💎 Features
 
 - Preserve YAML front matter in components
 - Support for nested components
 - Compatible with GFM (GitHub Flavored Markdown) and math syntax
 
-## Installation
+## 📦 Installation
 
 ```bash
 npm install -D prettier-plugin-mdc
@@ -20,7 +20,7 @@ yarn add -D prettier-plugin-mdc
 pnpm add -D prettier-plugin-mdc
 ```
 
-## Usage
+## 🚀 Usage
 
 Add the plugin to your Prettier configuration:
 
@@ -50,4 +50,4 @@ For MDC Syntax Reference, please check [remark-mdc](https://github.com/nuxt-cont
 
 ## License
 
-[MIT](./LICENSE). Made with love by [Ray](https://github.com/so1ve)
+[MIT](./LICENSE). Made with ❤️ by [Ray](https://github.com/so1ve)

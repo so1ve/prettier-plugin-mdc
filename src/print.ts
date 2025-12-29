@@ -329,5 +329,10 @@ export function printLink(
   }
   parts.push(")");
 
+  const attrStr = printAttributes(node, options);
+  if (attrStr) {
+    parts.push(attrStr);
+  }
+
   return parts;
 }

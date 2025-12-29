@@ -82,9 +82,7 @@ exports[`Attributes > formats case "linkReference" 1`] = `
 `;
 
 exports[`Attributes > formats case "nested" 1`] = `
-"[Hello
-
-[World]{.x}](/world){style="color: green"}
+"[Hello [World]{.x}](/world){style="color: green"}
 "
 `;
 

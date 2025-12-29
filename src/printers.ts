@@ -44,15 +44,17 @@ export const printers: Record<typeof AST_FORMAT, Printer<Node>> = {
     print(path, options, print, args) {
       const { node } = path;
 
+      // Link with textComponent children needs custom printing
+      // Check this before hasInlineAttribute since printLink handles attributes too
+      if (isLinkNode(node) && linkNeedsCustomPrinting(node)) {
+        return printLink(path as AstPath<LinkNode>, print, options);
+      }
+
       if (hasInlineAttribute(node)) {
         // Let the markdown printer handle the node first, then add attributes
         const printed = mdastPrinter.print(path, options, print, args);
 
         return [printed, printAttributes(node, options)];
-      }
-
-      if (isLinkNode(node) && linkNeedsCustomPrinting(node)) {
-        return printLink(path as AstPath<LinkNode>, print, options);
       }
 
       if (isTextComponentNode(node)) {

@@ -24,7 +24,7 @@ import type {
   LinkNode,
   TextComponentNode,
 } from "./types";
-import { hasInlineAttribute } from "./utils";
+import { extendedInlineNodesHaveAttributes } from "./utils";
 import type { MDCNodeTypes } from "./visitor-keys";
 import { mdcNodeTypes, visitorKeys } from "./visitor-keys";
 
@@ -50,7 +50,7 @@ export const printers: Record<typeof AST_FORMAT, Printer<Node>> = {
         return printLink(path as AstPath<LinkNode>, print, options);
       }
 
-      if (hasInlineAttribute(node)) {
+      if (extendedInlineNodesHaveAttributes(node)) {
         // Let the markdown printer handle the node first, then add attributes
         const printed = mdastPrinter.print(path, options, print, args);
 

@@ -8,6 +8,7 @@ import { unified } from "unified";
 import type { Node } from "unist";
 
 import { AST_FORMAT } from "./constants";
+import { validateYamlBlocks } from "./validate";
 
 export const parsers: Record<typeof AST_FORMAT, Parser<Node>> = {
   [AST_FORMAT]: {
@@ -23,6 +24,8 @@ export const parsers: Record<typeof AST_FORMAT, Parser<Node>> = {
         .use(remarkMdc);
 
       const ast = await processor.run(processor.parse(text));
+
+      validateYamlBlocks(ast, text);
 
       return ast;
     },

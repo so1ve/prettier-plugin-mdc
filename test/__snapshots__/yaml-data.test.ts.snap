@@ -1,6 +1,17 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`frontmatter > formats case "newline" 1`] = `
+exports[`yaml-data > formats case "newline" 1`] = `
+"::component
+---
+asf: a
+---
+
+foo
+::
+"
+`;
+
+exports[`yaml-data > formats case "with-spaces" 1`] = `
 "::component
 ---
 asf: a

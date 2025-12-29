@@ -198,8 +198,8 @@ function printRawData(rawData: string | undefined, options: Options): Doc[] {
   }
 
   // rawData starts with \n and ends with ---
-  // We need to output: ---\n<content>\n---\n
-  let content = rawData.slice(1, -3).trimEnd();
+  // We need to output: ---\n<content>\n---(spaces)
+  let content = rawData.trimEnd().slice(1, -3).trimEnd();
   if (!content) {
     return [];
   }

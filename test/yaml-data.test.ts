@@ -5,13 +5,22 @@ import { describe, expect, it } from "vitest";
 import { AST_FORMAT } from "../src/constants";
 import { runTests } from "./utils";
 
-describe("frontmatter", () => {
+describe("yaml-data", () => {
   runTests({
-    newline: dedent`
+    "newline": dedent`
     ::component
     ---
     asf: a
     ---
+
+    foo
+    ::
+  `,
+    "with-spaces": dedent`
+    ::component
+    ---
+    asf: a
+    ---    
 
     foo
     ::

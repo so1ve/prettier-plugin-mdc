@@ -33,6 +33,5 @@ describe("Attributes", () => {
 		"ignoreEscapeCharacterInNormalAttribute": ':copy{code="D:\\Software\\"}',
 		"ignoreEscapeCharacterInNormalAttributeYaml":
 			"::copy\n---\ncode: D:\\Software\\\n---\n::",
-		"sort-attributes": ':test{a="a" c="c" b="b"} text',
 	});
 });

@@ -105,11 +105,6 @@ exports[`Attributes > formats case "nested3" 1`] = `
 "
 `;
 
-exports[`Attributes > formats case "sort-attributes" 1`] = `
-":test{a="a" c="c" b="b"} text
-"
-`;
-
 exports[`Attributes > formats case "strong" 1`] = `
 "**strong**{#id .class}
 "

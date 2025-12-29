@@ -26,6 +26,7 @@ export const escapeQuotes = (value: string, quote: string): string =>
 
 /**
  * Quote a string value using Prettier's quote selection logic:
+ *
  * - Use preferred quote if value doesn't contain it
  * - Switch to alternative quote if value contains preferred but not alternative
  * - Use preferred quote with escaping if value contains both

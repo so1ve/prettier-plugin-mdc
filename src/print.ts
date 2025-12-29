@@ -14,16 +14,11 @@ import { formatYaml } from "./yaml";
 
 const { hardline, join } = doc.builders;
 
-// Helper to map children - workaround for TypeScript limitations with path.map
 const mapChildren = (path: AstPath<any>, print: PrintFn): Doc[] =>
 	path.map(print as any, "children");
 
-/**
- * Serialize attribute value
- */
 function serializeValue(value: unknown): string {
 	if (typeof value === "string") {
-		// Escape double quotes and backslashes inside the string
 		const escaped = value.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
 
 		return `"${escaped}"`;
@@ -36,7 +31,6 @@ function serializeValue(value: unknown): string {
 	return `'${JSON.stringify(value)}'`;
 }
 
-// TODO: rewrite
 export function printAttributes(node: NodeWithAttributes): string {
 	const attrs = node.attributes;
 	if (!attrs || Object.keys(attrs).length === 0) {
@@ -45,7 +39,6 @@ export function printAttributes(node: NodeWithAttributes): string {
 
 	const parts: string[] = [];
 
-	// Process each attribute in order
 	for (const [key, value] of Object.entries(attrs)) {
 		if (key === "id") {
 			parts.push(`#${value}`);
@@ -89,7 +82,6 @@ export function printTextComponent(
 ): Doc[] {
 	const { node } = path;
 
-	// Special handling for binding component
 	if (node.name === "binding") {
 		return printBinding(node, options);
 	}
@@ -102,7 +94,6 @@ export function printTextComponent(
 		parts.push("[", ...childDocs, "]");
 	}
 
-	// Print attributes
 	const attrStr = printAttributes(node);
 	if (attrStr) {
 		parts.push(attrStr);
@@ -144,7 +135,7 @@ function printRawData(rawData: string | undefined): Doc[] {
 
 	// rawData starts with \n and ends with ---
 	// We need to output: ---\n<content>\n---\n
-	let content = rawData.slice(1, -3).trimEnd(); // Remove leading \n and trailing ---
+	let content = rawData.slice(1, -3).trimEnd();
 	if (!content) {
 		return [];
 	}
@@ -178,10 +169,8 @@ export function printContainerComponent(
 
 	parts.push(hardline);
 
-	// Front matter attributes from rawData
 	parts.push(...printRawData(node.rawData));
 
-	// Print children
 	if (node.children && node.children.length > 0) {
 		const childDocs = mapChildren(path, print);
 		parts.push(join(hardline, childDocs));
@@ -204,12 +193,10 @@ export function printComponentContainerSection(
 	const { node } = path;
 	const parts: Doc[] = [];
 
-	// Slot name
 	if (node.name && node.name !== "default") {
 		parts.push(`#${node.name}`, hardline);
 	}
 
-	// Print children
 	if (node.children && node.children.length > 0) {
 		const childDocs = mapChildren(path, print);
 		parts.push(join(hardline, childDocs));

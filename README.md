@@ -27,7 +27,15 @@ Add the plugin to your Prettier configuration:
 ```json
 // .prettierrc
 {
-  "plugins": ["prettier-plugin-mdc"]
+  "plugins": ["prettier-plugin-mdc"],
+  "overrides": [
+    {
+      "files": ["*.md"],
+      "options": {
+        "parser": "mdc"
+      }
+    }
+  ]
 }
 ```
 
@@ -36,6 +44,14 @@ Or in `prettier.config.js`:
 ```js
 export default {
   plugins: ["prettier-plugin-mdc"],
+  overrides: [
+    {
+      files: ["*.md"],
+      options: {
+        parser: "mdc",
+      },
+    },
+  ],
 };
 ```
 

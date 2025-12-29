@@ -1,99 +1,99 @@
 import { runTests } from "./utils";
 
 runTests({
-	nested1: [
-		"::container",
-		"---",
-		'background-color: "#eee"',
-		"padding: 20px",
-		"---",
-		"# This is a header",
-		"",
-		':icon{color="#000" name="mdi:github" size="36px"}',
-		"",
-		"  :::content2",
-		"  Well",
-		"  :::",
-		"::",
-	].join("\n"),
+  nested1: [
+    "::container",
+    "---",
+    'background-color: "#eee"',
+    "padding: 20px",
+    "---",
+    "# This is a header",
+    "",
+    ':icon{color="#000" name="mdi:github" size="36px"}',
+    "",
+    "  :::content2",
+    "  Well",
+    "  :::",
+    "::",
+  ].join("\n"),
 
-	nested2: [
-		"::container",
-		"---",
-		"bi:",
-		"  url: https://example.com",
-		"  bg: contain",
-		"styles: |",
-		"  p {",
-		"    color: red;",
-		"  }",
-		"---",
-		"::",
-	].join("\n"),
+  nested2: [
+    "::container",
+    "---",
+    "bi:",
+    "  url: https://example.com",
+    "  bg: contain",
+    "styles: |",
+    "  p {",
+    "    color: red;",
+    "  }",
+    "---",
+    "::",
+  ].join("\n"),
 
-	list1: [
-		"- This is a list item.",
-		"",
-		"::container",
-		"- This is a list item.",
-		"::",
-	].join("\n"),
+  list1: [
+    "- This is a list item.",
+    "",
+    "::container",
+    "- This is a list item.",
+    "::",
+  ].join("\n"),
 
-	list2: [
-		"- This is a list item.",
-		"  ::container",
-		"  - This is a list item.",
-		"  ::",
-	].join("\n"),
+  list2: [
+    "- This is a list item.",
+    "  ::container",
+    "  - This is a list item.",
+    "  ::",
+  ].join("\n"),
 
-	list4: [
-		"::parent",
-		"- This is a list item.",
-		"",
-		"  :::container",
-		"  - This is a list item.",
-		"  :::",
-		"::",
-	].join("\n"),
+  list4: [
+    "::parent",
+    "- This is a list item.",
+    "",
+    "  :::container",
+    "  - This is a list item.",
+    "  :::",
+    "::",
+  ].join("\n"),
 
-	list5: [
-		"- This is a list item.",
-		"  ::container",
-		"  - This is a list item.",
-		"  ::",
-	].join("\n"),
+  list5: [
+    "- This is a list item.",
+    "  ::container",
+    "  - This is a list item.",
+    "  ::",
+  ].join("\n"),
 
-	list6: [
-		"::parent",
-		"- This is a list item.",
-		"    :::container",
-		"    - This is a list item.",
-		"    :::",
-		"::",
-	].join("\n"),
+  list6: [
+    "::parent",
+    "- This is a list item.",
+    "    :::container",
+    "    - This is a list item.",
+    "    :::",
+    "::",
+  ].join("\n"),
 
-	list7: [
-		"- This is a list item.",
-		"    :::container",
-		"    - This is a list item.",
-		"    :::",
-	].join("\n"),
+  list7: [
+    "- This is a list item.",
+    "    :::container",
+    "    - This is a list item.",
+    "    :::",
+  ].join("\n"),
 
-	list8: [
-		"::page-section",
-		"---",
-		"background-image:",
-		"  url:   https://images.example.com/dog.png",
-		"color: red",
-		"---",
-		"- This is a list item.2",
-		"",
-		"  :::container",
-		"  :::",
-		"::",
-	].join("\n"),
+  list8: [
+    "::page-section",
+    "---",
+    "background-image:",
+    "  url:   https://images.example.com/dog.png",
+    "color: red",
+    "---",
+    "- This is a list item.2",
+    "",
+    "  :::container",
+    "  :::",
+    "::",
+  ].join("\n"),
 
-	list10: `---
+  list10: `---
 title: ""
 description: ""
 ---
@@ -156,7 +156,7 @@ color: red
   :::
 ::`,
 
-	list11: `::page-container
+  list11: `::page-container
 ---
 simple-array:
   - item1
@@ -190,7 +190,7 @@ attributes:
 ---
 ::`,
 
-	list12: `::page-section
+  list12: `::page-section
 - This is a list item.
 
   :::container

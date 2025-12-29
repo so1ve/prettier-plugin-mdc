@@ -1,17 +1,17 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`span > formats case "[ ]" 1`] = `
-":span
+"[]
 "
 `;
 
 exports[`span > formats case "[x]" 1`] = `
-":span[x]
+"[x]
 "
 `;
 
 exports[`span > formats case "complex _" 1`] = `
-":span[span _span_ **span** \`span\`]
+"[span _span_ **span** \`span\`]
 "
 `;
 
@@ -31,14 +31,12 @@ exports[`span > formats case "ignored-bracket" 1`] = `
 `;
 
 exports[`span > formats case "inside-link-invalid" 1`] = `
-"[[span]](#href)
+"[\\[span\\]](#href)
 "
 `;
 
 exports[`span > formats case "inside-link-valid" 1`] = `
-"[
-
-:span[span]](#href)
+"[ [span]](#href)
 "
 `;
 
@@ -56,7 +54,7 @@ exports[`span > formats case "respect-reference-style-link" 1`] = `
 `;
 
 exports[`span > formats case "simple" 1`] = `
-":span[span]
+"[span]
 "
 `;
 

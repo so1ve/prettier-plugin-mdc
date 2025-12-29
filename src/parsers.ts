@@ -10,21 +10,21 @@ import type { Node } from "unist";
 import { AST_FORMAT } from "./constants";
 
 export const parsers: Record<typeof AST_FORMAT, Parser<Node>> = {
-	[AST_FORMAT]: {
-		...markdown.parsers.markdown,
-		astFormat: AST_FORMAT,
-		parse: async (text) => {
-			const processor = unified()
-				.use(remarkParse, {
-					commonmark: true,
-				})
-				.use(remarkMath)
-				.use(remarkGfm)
-				.use(remarkMdc);
+  [AST_FORMAT]: {
+    ...markdown.parsers.markdown,
+    astFormat: AST_FORMAT,
+    parse: async (text) => {
+      const processor = unified()
+        .use(remarkParse, {
+          commonmark: true,
+        })
+        .use(remarkMath)
+        .use(remarkGfm)
+        .use(remarkMdc);
 
-			const ast = await processor.run(processor.parse(text));
+      const ast = await processor.run(processor.parse(text));
 
-			return ast;
-		},
-	} as Parser<Node>,
+      return ast;
+    },
+  } as Parser<Node>,
 };

@@ -4,21 +4,25 @@ import type { Node } from "unist";
 
 import { AST_FORMAT } from "./constants";
 import {
-	isComponentContainerSectionNode,
-	isContainerComponentNode,
-	isTextComponentNode,
+  isComponentContainerSectionNode,
+  isContainerComponentNode,
+  isLinkNode,
+  isTextComponentNode,
+  linkNeedsCustomPrinting,
 } from "./is";
 import {
-	printAttributes,
-	printComponentContainerSection,
-	printContainerComponent,
-	printTextComponent,
+  printAttributes,
+  printComponentContainerSection,
+  printContainerComponent,
+  printLink,
+  printTextComponent,
 } from "./print";
 import type {
-	AstPath,
-	ComponentContainerSectionNode,
-	ContainerComponentNode,
-	TextComponentNode,
+  AstPath,
+  ComponentContainerSectionNode,
+  ContainerComponentNode,
+  LinkNode,
+  TextComponentNode,
 } from "./types";
 import { hasInlineAttribute } from "./utils";
 import type { MDCNodeTypes } from "./visitor-keys";
@@ -28,45 +32,49 @@ import { mdcNodeTypes, visitorKeys } from "./visitor-keys";
 const mdastPrinter: Printer = markdown.printers.mdast;
 
 export const printers: Record<typeof AST_FORMAT, Printer<Node>> = {
-	[AST_FORMAT]: {
-		...mdastPrinter,
-		getVisitorKeys(node, nonTraversableKeys) {
-			if (mdcNodeTypes.includes(node.type)) {
-				return visitorKeys[node.type as MDCNodeTypes];
-			}
+  [AST_FORMAT]: {
+    ...mdastPrinter,
+    getVisitorKeys(node, nonTraversableKeys) {
+      if (mdcNodeTypes.includes(node.type)) {
+        return visitorKeys[node.type as MDCNodeTypes];
+      }
 
-			return mdastPrinter.getVisitorKeys!(node, nonTraversableKeys);
-		},
-		print(path, options, print, args) {
-			const { node } = path;
+      return mdastPrinter.getVisitorKeys!(node, nonTraversableKeys);
+    },
+    print(path, options, print, args) {
+      const { node } = path;
 
-			if (hasInlineAttribute(node)) {
-				// Let the markdown printer handle the node first, then add attributes
-				const printed = mdastPrinter.print(path, options, print, args);
+      if (hasInlineAttribute(node)) {
+        // Let the markdown printer handle the node first, then add attributes
+        const printed = mdastPrinter.print(path, options, print, args);
 
-				return [printed, printAttributes(node, options)];
-			}
+        return [printed, printAttributes(node, options)];
+      }
 
-			if (isTextComponentNode(node)) {
-				return printTextComponent(
-					path as AstPath<TextComponentNode>,
-					print,
-					options,
-				);
-			} else if (isContainerComponentNode(node)) {
-				return printContainerComponent(
-					path as AstPath<ContainerComponentNode>,
-					print,
-					options,
-				);
-			} else if (isComponentContainerSectionNode(node)) {
-				return printComponentContainerSection(
-					path as AstPath<ComponentContainerSectionNode>,
-					print,
-				);
-			}
+      if (isLinkNode(node) && linkNeedsCustomPrinting(node)) {
+        return printLink(path as AstPath<LinkNode>, print, options);
+      }
 
-			return mdastPrinter.print(path, options, print, args);
-		},
-	} as Printer<Node>,
+      if (isTextComponentNode(node)) {
+        return printTextComponent(
+          path as AstPath<TextComponentNode>,
+          print,
+          options,
+        );
+      } else if (isContainerComponentNode(node)) {
+        return printContainerComponent(
+          path as AstPath<ContainerComponentNode>,
+          print,
+          options,
+        );
+      } else if (isComponentContainerSectionNode(node)) {
+        return printComponentContainerSection(
+          path as AstPath<ComponentContainerSectionNode>,
+          print,
+        );
+      }
+
+      return mdastPrinter.print(path, options, print, args);
+    },
+  } as Printer<Node>,
 };

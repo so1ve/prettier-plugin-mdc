@@ -19,7 +19,7 @@ exports[`block-component > formats case "component-attributes-array-of-number" 1
 `;
 
 exports[`block-component > formats case "component-attributes-array-of-string" 1`] = `
-"::container-component{:items="[\\"Nuxt\\", \\"Vue\\"]"}
+"::container-component{:items='["Nuxt", "Vue"]'}
 ::
 "
 `;
@@ -49,7 +49,7 @@ exports[`block-component > formats case "component-attributes-length-81" 1`] = `
 `;
 
 exports[`block-component > formats case "component-attributes-object" 1`] = `
-"::container-component{:items="{\\"key\\": \\"value\\"}"}
+"::container-component{:items='{"key": "value"}'}
 ::
 "
 `;
@@ -61,7 +61,7 @@ exports[`block-component > formats case "component-attributes-remove-duplicate" 
 `;
 
 exports[`block-component > formats case "component-hProperties-be-the-same" 1`] = `
-"::container-component{:items="{\\"key\\":\\"value\\"}"}
+"::container-component{:items='{"key":"value"}'}
 ::
 
 ::container-component

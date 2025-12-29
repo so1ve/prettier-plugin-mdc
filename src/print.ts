@@ -10,7 +10,7 @@ import type {
   PrintFn,
   TextComponentNode,
 } from "./types";
-import { escapeQuotes } from "./utils";
+import { escapeQuotes, quoteString } from "./utils";
 import { formatYaml } from "./yaml";
 
 const { hardline, join } = doc.builders;
@@ -19,21 +19,18 @@ const mapChildren = (path: AstPath<any>, print: PrintFn): Doc[] =>
   path.map(print as any, "children");
 
 function serializeValue(value: unknown, options: Options): string {
-  const quote = options.singleQuote ? "'" : '"';
-
   if (typeof value === "string") {
-    const escaped = escapeQuotes(value.replace(/\\/g, "\\\\"), quote);
-
-    return `${quote}${escaped}${quote}`;
+    return quoteString(value, options);
   }
   if (typeof value === "number" || typeof value === "boolean") {
     return String(value);
   }
 
   // For objects/arrays, use JSON
-  const escaped = escapeQuotes(JSON.stringify(value), quote);
+  const preferredQuote = options.singleQuote ? "'" : '"';
+  const escaped = escapeQuotes(JSON.stringify(value), preferredQuote);
 
-  return `${quote}${escaped}${quote}`;
+  return `${preferredQuote}${escaped}${preferredQuote}`;
 }
 
 export function printAttributes(
@@ -71,12 +68,9 @@ export function printAttributes(
 function printBinding(node: TextComponentNode, options: Options): Doc {
   const value = node.attributes?.value ?? "";
   const defaultValue = node.attributes?.defaultValue;
-  const quote = options.singleQuote ? "'" : '"';
 
   if (defaultValue !== undefined && defaultValue !== "undefined") {
-    const escaped = escapeQuotes(String(defaultValue), quote);
-
-    return [`{{ ${value} || ${quote}${escaped}${quote} }}`];
+    return [`{{ ${value} || ${quoteString(String(defaultValue), options)} }}`];
   }
 
   return [`{{ ${value} }}`];

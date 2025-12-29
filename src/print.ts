@@ -47,6 +47,8 @@ export function printAttributes(node: NodeWithAttributes): string {
 			for (const cls of classes) {
 				parts.push(`.${cls}`);
 			}
+		} else if (value === true) {
+			parts.push(key);
 		} else {
 			parts.push(`${key}=${serializeValue(value)}`);
 		}

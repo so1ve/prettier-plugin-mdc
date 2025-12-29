@@ -6,7 +6,7 @@ exports[`Attributes > formats case "# in class" 1`] = `
 `;
 
 exports[`Attributes > formats case "boolean" 1`] = `
-":test{prop=true} text
+":test{prop} text
 "
 `;
 

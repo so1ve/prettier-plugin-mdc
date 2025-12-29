@@ -1,6 +1,6 @@
 {
   "name": "prettier-plugin-mdc",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "packageManager": "pnpm@10.26.2",
   "author": "Ray <i@mk1.io> (@so1ve)",
   "type": "module",

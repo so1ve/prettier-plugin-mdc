@@ -20,10 +20,9 @@ exports[`formats case "list2" 1`] = `
 exports[`formats case "list4" 1`] = `
 "::parent
 - This is a list item.
-
-  :::container
-  - This is a list item.
-  :::
+:::container
+- This is a list item.
+:::
 ::
 "
 `;
@@ -62,9 +61,8 @@ background-image:
 color: red
 ---
 - This is a list item.2
-
-  :::container
-  :::
+:::container
+:::
 ::
 "
 `;
@@ -94,38 +92,36 @@ color: red
   - This is a CHILD list item.
     - This is a GRANDCHILD list item.
 - This is a list item.
-
-  :::container
-  - This is a list item.
-  - This is a list item.
+:::container
+- This is a list item.
+- This is a list item.
+- This is a CHILD list item.
+  - This is a GRANDCHILD list item.
+- This is a list item.
+:::
+:::container
+- This is a list item.
+- This is a list item.
   - This is a CHILD list item.
     - This is a GRANDCHILD list item.
-  - This is a list item.
-  :::
-
-  :::container
-  - This is a list item.
-  - This is a list item.
-    - This is a CHILD list item.
-      - This is a GRANDCHILD list item.
-  - This is a list item.
-  :button[This is nested another level]
-  ::::container
-  ---
-  background-image:
-    url: https://images.example.com/dog.png
-  color: red
-  ---
-  - This is a list item.
-  - This is a list item.
-    - This is a CHILD list item.
-      - This is a GRANDCHILD list item.
-  - This is a list item.
-  This content is below the list.
-  ::::
-  :icon{name="mdi:github"}
-  More outer content.
-  :::
+- This is a list item.
+:button[This is nested another level]
+::::container
+---
+background-image:
+  url: https://images.example.com/dog.png
+color: red
+---
+- This is a list item.
+- This is a list item.
+  - This is a CHILD list item.
+    - This is a GRANDCHILD list item.
+- This is a list item.
+This content is below the list.
+::::
+:icon{name="mdi:github"}
+More outer content.
+:::
 ::
 "
 `;
@@ -170,10 +166,9 @@ attributes:
 exports[`formats case "list12" 1`] = `
 "::page-section
 - This is a list item.
-
-  :::container
-  - This is a list item.
-  :::
+:::container
+- This is a list item.
+:::
 ::
 "
 `;

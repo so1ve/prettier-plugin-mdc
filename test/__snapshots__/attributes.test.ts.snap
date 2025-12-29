@@ -1,7 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Attributes > formats case "# in class" 1`] = `
-"\`code\`{#E74249] .bg-[}
+"\`code\`{#id .bg-[#E74249]}
 "
 `;
 

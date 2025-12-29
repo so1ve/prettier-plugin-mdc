@@ -1,7 +1,7 @@
 {
 	"name": "pkg-name",
 	"version": "0.0.0",
-	"packageManager": "pnpm@10.23.0",
+	"packageManager": "pnpm@10.26.2",
 	"author": "Ray <i@mk1.io> (@so1ve)",
 	"type": "module",
 	"description": "",
@@ -48,7 +48,7 @@
 		"mdast-util-to-markdown": "^2.1.2",
 		"remark-gfm": "^4.0.1",
 		"remark-math": "^6.0.0",
-		"remark-mdc": "^3.8.1",
+		"remark-mdc": "^3.10.0",
 		"remark-parse": "^11.0.0",
 		"remark-stringify": "^11.0.0",
 		"stringify-entities": "^4.0.4",
@@ -56,19 +56,19 @@
 		"unified": "^11.0.5"
 	},
 	"devDependencies": {
-		"@antfu/ni": "^27.0.1",
+		"@antfu/ni": "^28.0.0",
 		"@so1ve/eslint-config": "^4.1.4",
 		"@so1ve/prettier-config": "^4.1.4",
-		"@types/node": "^24.10.1",
+		"@types/node": "^25.0.3",
 		"@typescript/native-preview": "7.0.0-dev.20251029.1",
-		"bumpp": "^10.3.1",
-		"dedent": "^1.7.0",
-		"eslint": "^9.39.1",
-		"prettier": "^3.6.2",
-		"tsdown": "^0.16.6",
+		"bumpp": "^10.3.2",
+		"dedent": "^1.7.1",
+		"eslint": "^9.39.2",
+		"prettier": "^3.7.4",
+		"tsdown": "^0.18.3",
 		"typescript": "^5.9.3",
-		"vite": "^7.2.4",
-		"vitest": "^4.0.13"
+		"vite": "^7.3.0",
+		"vitest": "^4.0.16"
 	},
 	"peerDependencies": {
 		"prettier": "~3.6.2"

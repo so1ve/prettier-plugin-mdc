@@ -16,7 +16,7 @@ exports[`span > formats case "complex _" 1`] = `
 `;
 
 exports[`span > formats case "complex" 1`] = `
-":span[span _span_ **span** \`span\`]{a="a" b="b"}
+"[span _span_ **span** \`span\`]{a="a" b="b"}
 "
 `;
 
@@ -59,6 +59,6 @@ exports[`span > formats case "simple" 1`] = `
 `;
 
 exports[`span > formats case "with-attributes" 1`] = `
-":span[span]{#theid .aclass .anotherclass .andother foo="bar"}
+"[span]{#theid .aclass .anotherclass .andother foo="bar"}
 "
 `;

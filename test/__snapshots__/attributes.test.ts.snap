@@ -84,7 +84,7 @@ exports[`Attributes > formats case "linkReference" 1`] = `
 exports[`Attributes > formats case "nested" 1`] = `
 "[Hello
 
-:span[World]{.x}](/world){style="color: green"}
+[World]{.x}](/world){style="color: green"}
 "
 `;
 
@@ -96,7 +96,7 @@ exports[`Attributes > formats case "nested-in-table" 1`] = `
 `;
 
 exports[`Attributes > formats case "nested2" 1`] = `
-":span[Hello [World](/world){.x}]{style="color: green"}
+"[Hello [World](/world){.x}]{style="color: green"}
 "
 `;
 

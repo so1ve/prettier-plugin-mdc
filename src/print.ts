@@ -130,15 +130,15 @@ export function printTextComponent(
 
   const attrStr = printAttributes(node, options);
 
-  // Span shorthand without attributes: [content]
-  if (isShorthandSpan(node) && !attrStr) {
+  // Span shorthand: [content] or [content]{attrs}
+  if (isShorthandSpan(node)) {
     if (node.children && node.children.length > 0) {
       const childDocs = mapChildren(path, print);
 
-      return ["[", ...childDocs, "]"];
+      return ["[", ...childDocs, "]", attrStr];
     }
 
-    return ["[]"];
+    return ["[]", attrStr];
   }
 
   // For simple text-only children, return a string to ensure inline behavior

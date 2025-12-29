@@ -1,9 +1,14 @@
 import type { Parent } from "mdast";
-import type { AstPath as PrettierAstPath, Printer } from "prettier";
+import type {
+  AstPath as PrettierAstPath,
+  ParserOptions,
+  Printer,
+} from "prettier";
 import type { Node } from "unist";
 
 export type PrintFn<T = Parent> = Parameters<Printer<T>["print"]>[2];
 export type AstPath<T = Parent> = PrettierAstPath<T>;
+export type Options = ParserOptions<Node>;
 
 export type Attributes = Record<string, any>;
 

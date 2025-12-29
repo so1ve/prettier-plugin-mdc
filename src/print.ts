@@ -1,4 +1,4 @@
-import type { Doc, Options } from "prettier";
+import type { Doc } from "prettier";
 import { doc } from "prettier";
 
 import type {
@@ -7,6 +7,7 @@ import type {
   ContainerComponentNode,
   LinkNode,
   NodeWithAttributes,
+  Options,
   PrintFn,
   TextComponentNode,
 } from "./types";
@@ -34,17 +35,16 @@ function serializeValue(value: unknown, options: Options): string {
 }
 
 export function printAttributes(
-  node: NodeWithAttributes,
+  { attributes }: NodeWithAttributes,
   options: Options,
 ): string {
-  const attrs = node.attributes;
-  if (!attrs || Object.keys(attrs).length === 0) {
+  if (!attributes || Object.keys(attributes).length === 0) {
     return "";
   }
 
   const parts: string[] = [];
 
-  for (const [key, value] of Object.entries(attrs)) {
+  for (const [key, value] of Object.entries(attributes)) {
     if (key === "id") {
       parts.push(`#${value}`);
     } else if (key === "class") {
@@ -105,6 +105,8 @@ function isShorthandSpan(node: TextComponentNode): boolean {
   return nodeLength <= 3;
 }
 
+const EMPTY_PROPS_RE = /\{\s*\}\s*$/;
+
 /**
  * Print inline text component: :name[content]{attrs} Special cases:
  *
@@ -162,6 +164,15 @@ export function printTextComponent(
 
   if (attrStr) {
     parts.push(attrStr);
+  } else if (node.position) {
+    const text = options.originalText.slice(
+      node.position.start.offset,
+      node.position.end.offset,
+    );
+
+    if (EMPTY_PROPS_RE.test(text)) {
+      parts.push("{}");
+    }
   }
 
   return parts;

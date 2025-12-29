@@ -1,0 +1,3 @@
+{
+  "exclude": ["unified", "remark-footnotes", "remark-math", "remark-parse"]
+}

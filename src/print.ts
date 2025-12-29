@@ -17,21 +17,28 @@ const { hardline, join } = doc.builders;
 const mapChildren = (path: AstPath<any>, print: PrintFn): Doc[] =>
 	path.map(print as any, "children");
 
-function serializeValue(value: unknown): string {
-	if (typeof value === "string") {
-		const escaped = value.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+function serializeValue(value: unknown, options: Options): string {
+	const quote = options.singleQuote ? "'" : '"';
 
-		return `"${escaped}"`;
+	if (typeof value === "string") {
+		const escaped = escapeQuotes(value.replace(/\\/g, "\\\\"), quote);
+
+		return `${quote}${escaped}${quote}`;
 	}
 	if (typeof value === "number" || typeof value === "boolean") {
 		return String(value);
 	}
 
 	// For objects/arrays, use JSON
-	return `'${JSON.stringify(value)}'`;
+	const escaped = escapeQuotes(JSON.stringify(value), quote);
+
+	return `${quote}${escaped}${quote}`;
 }
 
-export function printAttributes(node: NodeWithAttributes): string {
+export function printAttributes(
+	node: NodeWithAttributes,
+	options: Options,
+): string {
 	const attrs = node.attributes;
 	if (!attrs || Object.keys(attrs).length === 0) {
 		return "";
@@ -50,7 +57,7 @@ export function printAttributes(node: NodeWithAttributes): string {
 		} else if (value === true) {
 			parts.push(key);
 		} else {
-			parts.push(`${key}=${serializeValue(value)}`);
+			parts.push(`${key}=${serializeValue(value, options)}`);
 		}
 	}
 
@@ -96,7 +103,7 @@ export function printTextComponent(
 		parts.push("[", ...childDocs, "]");
 	}
 
-	const attrStr = printAttributes(node);
+	const attrStr = printAttributes(node, options);
 	if (attrStr) {
 		parts.push(attrStr);
 	}
@@ -165,7 +172,7 @@ export function printContainerComponent(
 
 	// Opening tag: ::name{attrs}
 
-	const attrStr = printAttributes(node);
+	const attrStr = printAttributes(node, options);
 	if (attrStr) {
 		parts.push(attrStr);
 	}

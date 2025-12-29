@@ -44,7 +44,7 @@ export const printers: Record<typeof AST_FORMAT, Printer<Node>> = {
 				// Let the markdown printer handle the node first, then add attributes
 				const printed = mdastPrinter.print(path, options, print, args);
 
-				return [printed, printAttributes(node)];
+				return [printed, printAttributes(node, options)];
 			}
 
 			if (isTextComponentNode(node)) {

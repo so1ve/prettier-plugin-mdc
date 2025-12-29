@@ -15,5 +15,5 @@ const extendedInlineNodes = [
 export const hasInlineAttribute = (node: Node): node is NodeWithAttributes =>
 	extendedInlineNodes.includes(node.type) && "attributes" in node;
 
-export const shouldProcess = (node: Node) =>
+export const shouldProcess = (node: Node): boolean =>
 	hasInlineAttribute(node) || mdcNodeTypes.includes(node.type);

@@ -1,7 +1,8 @@
 import { defineConfig } from "tsdown";
 
 export default defineConfig({
-	fixedExtension: false,
+	entry: ["./src/index.ts", "./src/yaml-worker.ts"],
 	clean: true,
-	dts: true,
+	dts: { oxc: true },
+	exports: true,
 });

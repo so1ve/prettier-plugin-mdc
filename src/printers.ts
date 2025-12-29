@@ -14,6 +14,12 @@ import {
 	printContainerComponent,
 	printTextComponent,
 } from "./print";
+import type {
+	AstPath,
+	ComponentContainerSectionNode,
+	ContainerComponentNode,
+	TextComponentNode,
+} from "./types";
 import { hasInlineAttribute } from "./utils";
 import type { MDCNodeTypes } from "./visitor-keys";
 import { mdcNodeTypes, visitorKeys } from "./visitor-keys";
@@ -21,7 +27,7 @@ import { mdcNodeTypes, visitorKeys } from "./visitor-keys";
 // @ts-expect-error -- does not provide public exports
 const mdastPrinter: Printer = markdown.printers.mdast;
 
-export const printers = {
+export const printers: Record<typeof AST_FORMAT, Printer<Node>> = {
 	[AST_FORMAT]: {
 		...mdastPrinter,
 		getVisitorKeys(node, nonTraversableKeys) {
@@ -41,20 +47,18 @@ export const printers = {
 				return [printed, printAttributes(node)];
 			}
 
-			if (mdcNodeTypes.includes(node.type)) {
-				if (isTextComponentNode(node)) {
-					return printTextComponent(path, print);
-				} else if (isContainerComponentNode(node)) {
-					return printContainerComponent(path, print);
-				} else if (isComponentContainerSectionNode(node)) {
-					return printComponentContainerSection(path, print);
-				} else {
-					// Fallback to original text
-					return options.originalText.slice(
-						node.position!.start.offset,
-						node.position!.end.offset,
-					);
-				}
+			if (isTextComponentNode(node)) {
+				return printTextComponent(path as AstPath<TextComponentNode>, print);
+			} else if (isContainerComponentNode(node)) {
+				return printContainerComponent(
+					path as AstPath<ContainerComponentNode>,
+					print,
+				);
+			} else if (isComponentContainerSectionNode(node)) {
+				return printComponentContainerSection(
+					path as AstPath<ComponentContainerSectionNode>,
+					print,
+				);
 			}
 
 			return mdastPrinter.print(path, options, print, args);

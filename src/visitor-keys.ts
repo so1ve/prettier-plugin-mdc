@@ -3,9 +3,9 @@ export type MDCNodeTypes = keyof typeof visitorKeys;
 // put it here because @keep-sorted not working on first line... idk why
 // @keep-sorted
 export const visitorKeys = {
-	componentContainerSection: ["children"],
-	containerComponent: ["children"],
-	textComponent: ["children"],
+	componentContainerSection: ["children"] as const,
+	containerComponent: ["children"] as const,
+	textComponent: ["children"] as const,
 };
 
-export const mdcNodeTypes = Object.keys(visitorKeys);
+export const mdcNodeTypes: string[] = Object.keys(visitorKeys);

@@ -17,19 +17,13 @@
 	"license": "MIT",
 	"sideEffects": false,
 	"exports": {
-		".": "./dist/index.js",
+		".": "./dist/index.mjs",
+		"./yaml-worker": "./dist/yaml-worker.mjs",
 		"./package.json": "./package.json"
 	},
-	"main": "./dist/index.js",
-	"module": "./dist/index.js",
-	"typesVersions": {
-		"*": {
-			"*": [
-				"./dist/*",
-				"./dist/index.d.ts"
-			]
-		}
-	},
+	"main": "./dist/index.mjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.mts",
 	"files": [
 		"dist"
 	],
@@ -43,7 +37,9 @@
 		"prepublishOnly": "nr build",
 		"release": "bumpp --commit --push --tag && pnpm publish",
 		"test": "vitest",
-		"typecheck": "tsgo --noEmit",
+		"typecheck": "nr typecheck:isolated && nr typecheck:non-isolated",
+		"typecheck:isolated": "tsc --noEmit --project tsconfig.isolated.json",
+		"typecheck:non-isolated": "tsgo --noEmit --project tsconfig.non-isolated.json",
 		"watch": "tsdown --watch"
 	},
 	"dependencies": {
@@ -56,12 +52,13 @@
 		"remark-parse": "^11.0.0",
 		"remark-stringify": "^11.0.0",
 		"stringify-entities": "^4.0.4",
+		"synckit": "^0.11.11",
 		"unified": "^11.0.5"
 	},
 	"devDependencies": {
 		"@antfu/ni": "^27.0.1",
-		"@so1ve/eslint-config": "^3.15.0",
-		"@so1ve/prettier-config": "^3.15.0",
+		"@so1ve/eslint-config": "^4.1.4",
+		"@so1ve/prettier-config": "^4.1.4",
 		"@types/node": "^24.10.1",
 		"@typescript/native-preview": "7.0.0-dev.20251029.1",
 		"bumpp": "^10.3.1",

@@ -9,7 +9,7 @@ import type { Node } from "unist";
 
 import { AST_FORMAT } from "./constants";
 
-export const parsers = {
+export const parsers: Record<typeof AST_FORMAT, Parser<Node>> = {
 	[AST_FORMAT]: {
 		...markdown.parsers.markdown,
 		astFormat: AST_FORMAT,

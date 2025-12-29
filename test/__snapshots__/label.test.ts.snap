@@ -16,7 +16,7 @@ exports[`label > formats case "invalid-label-eol" 1`] = `
 `;
 
 exports[`label > formats case "scaped-characters" 1`] = `
-":test[scape [ character] text
+":test[scape \\[ character] text
 "
 `;
 

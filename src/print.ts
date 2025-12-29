@@ -130,34 +130,40 @@ export function printTextComponent(
 
   const attrStr = printAttributes(node, options);
 
+  function printChildrenWithEscapedBrackets(): Doc[] {
+    const childParts: Doc[] = [];
+    for (let i = 0; i < node.children!.length; i++) {
+      const child = node.children![i];
+      if (
+        child.type === "text" ||
+        // @ts-expect-error prettier internal type
+        child.type === "sentence" ||
+        // @ts-expect-error prettier internal type
+        child.type === "whitespace"
+      ) {
+        childParts.push(escapeTextBrackets(child));
+      } else {
+        childParts.push(path.call(print as any, "children", i));
+      }
+    }
+
+    return childParts;
+  }
+
   // Span shorthand: [content] or [content]{attrs}
   if (isShorthandSpan(node)) {
     if (node.children && node.children.length > 0) {
-      const childDocs = mapChildren(path, print);
-
-      return ["[", ...childDocs, "]", attrStr];
+      return ["[", ...printChildrenWithEscapedBrackets(), "]", attrStr];
     }
 
     return ["[]", attrStr];
-  }
-
-  // For simple text-only children, return a string to ensure inline behavior
-  if (
-    node.children?.length === 1 &&
-    node.children[0].type === "text" &&
-    !attrStr
-  ) {
-    const textContent = (node.children[0] as { value: string }).value;
-
-    return `:${node.name}[${textContent}]`;
   }
 
   const parts: Doc[] = [`:${node.name}`];
 
   // Print children inside brackets if any
   if (node.children && node.children.length > 0) {
-    const childDocs = mapChildren(path, print);
-    parts.push("[", ...childDocs, "]");
+    parts.push("[", ...printChildrenWithEscapedBrackets(), "]");
   }
 
   if (attrStr) {

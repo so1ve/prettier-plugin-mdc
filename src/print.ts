@@ -1,4 +1,4 @@
-import type { Doc } from "prettier";
+import type { Doc, Options } from "prettier";
 import { doc } from "prettier";
 
 import type {
@@ -7,12 +7,11 @@ import type {
   ContainerComponentNode,
   LinkNode,
   NodeWithAttributes,
-  Options,
+  ParserOptions,
   PrintFn,
   TextComponentNode,
 } from "./types";
 import { escapeQuotes, quoteString } from "./utils";
-import { formatYaml } from "./yaml";
 
 const { hardline, join } = doc.builders;
 
@@ -116,7 +115,7 @@ const EMPTY_PROPS_RE = /\{\s*\}\s*$/;
 export function printTextComponent(
   path: AstPath<TextComponentNode>,
   print: PrintFn,
-  options: Options,
+  options: ParserOptions,
 ): Doc {
   const { node } = path;
 
@@ -200,36 +199,11 @@ function getContainerDepth(path: AstPath): number {
   return Math.max(0, depth - 1);
 }
 
-/**
- * Print YAML front matter from rawData rawData format: "\nkey: value\n---"
- */
-function printRawData(rawData: string | undefined, options: Options): Doc[] {
-  if (!rawData) {
-    return [];
-  }
-
-  // rawData starts with \n and ends with ---
-  // We need to output: ---\n<content>\n---(spaces)
-  let content = rawData.trimEnd().slice(1, -3).trimEnd();
-  if (!content) {
-    return [];
-  }
-
-  content = formatYaml(content, options);
-
-  // Split into lines and join with hardline so prettier can handle indentation
-  const lines = content.split("\n");
-
-  return ["---", hardline, join(hardline, lines), hardline, "---", hardline];
-}
-
-/**
- * Print container component: ::name{attrs}\n---\nfmAttrs\n---\nchildren\n::
- */
-export function printContainerComponent(
+export function printContainerComponentWithYamlDoc(
   path: AstPath<ContainerComponentNode>,
   print: PrintFn,
   options: Options,
+  yamlDoc: Doc[],
 ): Doc {
   const { node } = path;
   const depth = getContainerDepth(path);
@@ -245,12 +219,14 @@ export function printContainerComponent(
 
   parts.push(hardline);
 
-  const rawDataDoc = printRawData(node.rawData, options);
-  parts.push(...rawDataDoc);
+  // Add YAML doc if present
+  if (yamlDoc.length > 0) {
+    parts.push(...yamlDoc);
+  }
 
   if (node.children && node.children.length > 0) {
     // Check if there's a blank line between rawData and first child in original input
-    if (rawDataDoc.length > 0 && node.rawData) {
+    if (yamlDoc.length > 0 && node.rawData) {
       const componentStartLine = node.position?.start.line ?? 0;
       // rawData format: "\n<content>\n---"
       // Count newlines in rawData to determine where it ends

@@ -1,4 +1,5 @@
-import type { Printer } from "prettier";
+import type { Doc, Printer } from "prettier";
+import { doc } from "prettier";
 import * as markdown from "prettier/plugins/markdown";
 import type { Node } from "unist";
 
@@ -13,7 +14,7 @@ import {
 import {
   printAttributes,
   printComponentContainerSection,
-  printContainerComponent,
+  printContainerComponentWithYamlDoc,
   printLink,
   printTextComponent,
 } from "./print";
@@ -28,8 +29,21 @@ import { extendedInlineNodesHaveAttributes } from "./utils";
 import type { MDCNodeTypes } from "./visitor-keys";
 import { mdcNodeTypes, visitorKeys } from "./visitor-keys";
 
+const { hardline } = doc.builders;
+
 // @ts-expect-error -- does not provide public exports
 const mdastPrinter: Printer = markdown.printers.mdast;
+
+function extractYamlContent(rawData: string | undefined): string | undefined {
+  if (!rawData) {
+    return undefined;
+  }
+
+  // rawData starts with \n and ends with ---
+  const content = rawData.trimEnd().slice(1, -3).trimEnd();
+
+  return content || undefined;
+}
 
 export const printers: Record<typeof AST_FORMAT, Printer<Node>> = {
   [AST_FORMAT]: {
@@ -40,6 +54,32 @@ export const printers: Record<typeof AST_FORMAT, Printer<Node>> = {
       }
 
       return mdastPrinter.getVisitorKeys!(node, nonTraversableKeys);
+    },
+    embed(path) {
+      const { node } = path;
+
+      if (isContainerComponentNode(node) && node.rawData) {
+        const yamlContent = extractYamlContent(node.rawData);
+        if (yamlContent) {
+          return async (textToDoc, print, _path, options): Promise<Doc> => {
+            let yamlDoc: Doc;
+            try {
+              yamlDoc = await textToDoc(yamlContent, { parser: "yaml" });
+            } catch {
+              yamlDoc = yamlContent;
+            }
+
+            return printContainerComponentWithYamlDoc(
+              path as AstPath<ContainerComponentNode>,
+              print,
+              options,
+              ["---", hardline, yamlDoc, hardline, "---", hardline],
+            );
+          };
+        }
+      }
+
+      return null;
     },
     print(path, options, print, args) {
       const { node } = path;
@@ -64,10 +104,13 @@ export const printers: Record<typeof AST_FORMAT, Printer<Node>> = {
           options,
         );
       } else if (isContainerComponentNode(node)) {
-        return printContainerComponent(
+        // If node has rawData with YAML, it's handled by embed
+        // This branch handles containerComponents without rawData
+        return printContainerComponentWithYamlDoc(
           path as AstPath<ContainerComponentNode>,
           print,
           options,
+          [],
         );
       } else if (isComponentContainerSectionNode(node)) {
         return printComponentContainerSection(

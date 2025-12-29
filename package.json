@@ -25,7 +25,6 @@
   "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
-    "./yaml-worker": "./dist/yaml-worker.mjs",
     "./package.json": "./package.json"
   },
   "main": "./dist/index.mjs",
@@ -55,7 +54,6 @@
     "remark-math": "^6.0.0",
     "remark-mdc": "^3.10.0",
     "remark-parse": "^11.0.0",
-    "synckit": "^0.11.11",
     "unified": "^11.0.5"
   },
   "devDependencies": {

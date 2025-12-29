@@ -1,5 +1,4 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>so1ve/renovate-config"],
-  "ignoreDeps": ["unified", "remark-footnotes", "remark-math", "remark-parse"]
+  "extends": ["github>so1ve/renovate-config"]
 }

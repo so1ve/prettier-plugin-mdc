@@ -1,4 +1,4 @@
-import { runTests } from "./utils";
+import { runTests } from "../utils";
 
 runTests({
   nested1: [

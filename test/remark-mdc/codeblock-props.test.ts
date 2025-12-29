@@ -1,6 +1,6 @@
 import { describe } from "vitest";
 
-import { runTests } from "./utils";
+import { runTests } from "../utils";
 
 describe("codeblock-props", () => {
   runTests({

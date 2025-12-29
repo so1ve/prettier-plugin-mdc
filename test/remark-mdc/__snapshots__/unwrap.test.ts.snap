@@ -1,0 +1,41 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`auto-unwrap > formats case "componentChildren" 1`] = `
+"::test
+:::another-component
+:::
+::
+"
+`;
+
+exports[`auto-unwrap > formats case "simple" 1`] = `
+"::test
+Hello World
+::
+"
+`;
+
+exports[`auto-unwrap > formats case "slot" 1`] = `
+"::test
+#title
+Hello World
+::
+"
+`;
+
+exports[`auto-unwrap > formats case "twoChildren" 1`] = `
+"::test
+Foo bar
+Hello World
+::
+"
+`;
+
+exports[`auto-unwrap > formats case "twoSlots" 1`] = `
+"::test
+Foo bar
+#title
+Hello World
+::
+"
+`;

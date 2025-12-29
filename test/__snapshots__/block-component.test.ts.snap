@@ -1,66 +1,66 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`block-component > formats case #component-attributes 1`] = `
+exports[`block-component > formats case "component-attributes" 1`] = `
 "::component{key="value"}
 ::
 "
 `;
 
-exports[`block-component > formats case #component-attributes-array-convert-double-quote 1`] = `
+exports[`block-component > formats case "component-attributes-array-convert-double-quote" 1`] = `
 "::container-component{:items="[1,2,3.5]"}
 ::
 "
 `;
 
-exports[`block-component > formats case #component-attributes-array-of-number 1`] = `
+exports[`block-component > formats case "component-attributes-array-of-number" 1`] = `
 "::container-component{:items="[1,2,3.5]"}
 ::
 "
 `;
 
-exports[`block-component > formats case #component-attributes-array-of-string 1`] = `
+exports[`block-component > formats case "component-attributes-array-of-string" 1`] = `
 "::container-component{:items="[\\"Nuxt\\", \\"Vue\\"]"}
 ::
 "
 `;
 
-exports[`block-component > formats case #component-attributes-bad-array 1`] = `
+exports[`block-component > formats case "component-attributes-bad-array" 1`] = `
 "::container-component{:items="[Nuxt,Vue]"}
 ::
 "
 `;
 
-exports[`block-component > formats case #component-attributes-bind-frontmatter 1`] = `
+exports[`block-component > formats case "component-attributes-bind-frontmatter" 1`] = `
 "::text-component{:key="value"}
 ::
 "
 `;
 
-exports[`block-component > formats case #component-attributes-length-80 1`] = `
+exports[`block-component > formats case "component-attributes-length-80" 1`] = `
 "::component{a="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
 ::
 "
 `;
 
-exports[`block-component > formats case #component-attributes-length-81 1`] = `
+exports[`block-component > formats case "component-attributes-length-81" 1`] = `
 "::component{a="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
 ::
 "
 `;
 
-exports[`block-component > formats case #component-attributes-object 1`] = `
+exports[`block-component > formats case "component-attributes-object" 1`] = `
 "::container-component{:items="{\\"key\\": \\"value\\"}"}
 ::
 "
 `;
 
-exports[`block-component > formats case #component-attributes-remove-duplicate 1`] = `
+exports[`block-component > formats case "component-attributes-remove-duplicate" 1`] = `
 "::component{key="value"}
 ::
 "
 `;
 
-exports[`block-component > formats case #component-hProperties-be-the-same 1`] = `
+exports[`block-component > formats case "component-hProperties-be-the-same" 1`] = `
 "::container-component{:items="{\\"key\\":\\"value\\"}"}
 ::
 
@@ -73,7 +73,7 @@ items:
 "
 `;
 
-exports[`block-component > formats case #dangling-list 1`] = `
+exports[`block-component > formats case "dangling-list" 1`] = `
 "::component
 - list item
 - list item
@@ -83,20 +83,20 @@ slot content
 "
 `;
 
-exports[`block-component > formats case #default-slot-attributes 1`] = `
+exports[`block-component > formats case "default-slot-attributes" 1`] = `
 "::container-component
 slot content
 ::
 "
 `;
 
-exports[`block-component > formats case #empty 1`] = `
+exports[`block-component > formats case "empty" 1`] = `
 "::component
 ::
 "
 `;
 
-exports[`block-component > formats case #empty-slot 1`] = `
+exports[`block-component > formats case "empty-slot" 1`] = `
 "::component
 #text
 
@@ -104,7 +104,7 @@ exports[`block-component > formats case #empty-slot 1`] = `
 "
 `;
 
-exports[`block-component > formats case #frontmatter 1`] = `
+exports[`block-component > formats case "frontmatter" 1`] = `
 "::with-frontmatter
 ---
 key: value
@@ -116,7 +116,7 @@ array:
 "
 `;
 
-exports[`block-component > formats case #frontmatter-with-binding-variables 1`] = `
+exports[`block-component > formats case "frontmatter-with-binding-variables" 1`] = `
 "::with-frontmatter
 ---
 :key: value
@@ -131,7 +131,7 @@ object:
 "
 `;
 
-exports[`block-component > formats case #frontmatter1 1`] = `
+exports[`block-component > formats case "frontmatter1" 1`] = `
 "::with-frontmatter
 ---
 key: value
@@ -146,7 +146,7 @@ array:
 "
 `;
 
-exports[`block-component > formats case #ignore-code-fence 1`] = `
+exports[`block-component > formats case "ignore-code-fence" 1`] = `
 "::component
 First line
 \`\`\`cpp
@@ -159,13 +159,13 @@ Third line
 "
 `;
 
-exports[`block-component > formats case #jsonScapeAttr 1`] = `
+exports[`block-component > formats case "jsonScapeAttr" 1`] = `
 "::foo{:test="{\\"foo\\":\\"I'd love to\\"}"}
 ::
 "
 `;
 
-exports[`block-component > formats case #nested-component 1`] = `
+exports[`block-component > formats case "nested-component" 1`] = `
 "::with-frontmatter-and-nested-component
 ---
 key: value
@@ -185,7 +185,7 @@ key: value
 "
 `;
 
-exports[`block-component > formats case #nested-empty-line 1`] = `
+exports[`block-component > formats case "nested-empty-line" 1`] = `
 "::container{padding="0px"}
 :::container
 ---
@@ -209,14 +209,14 @@ function test() {
 "
 `;
 
-exports[`block-component > formats case #paragraphWithComponents 1`] = `
+exports[`block-component > formats case "paragraphWithComponents" 1`] = `
 "::test
 Hello world :this is a **test**, with _different_ **styles** and a [link](https://nuxtjs.org){target="_blank"}
 ::
 "
 `;
 
-exports[`block-component > formats case #section-order 1`] = `
+exports[`block-component > formats case "section-order" 1`] = `
 "::comp
 #title
 Hello
@@ -229,7 +229,7 @@ P
 "
 `;
 
-exports[`block-component > formats case #section-order-2 1`] = `
+exports[`block-component > formats case "section-order-2" 1`] = `
 "::comp
 #a
 A
@@ -242,7 +242,7 @@ P1
 "
 `;
 
-exports[`block-component > formats case #slot-attributes 1`] = `
+exports[`block-component > formats case "slot-attributes" 1`] = `
 "::container-component
 #slot
 slot content
@@ -250,19 +250,19 @@ slot content
 "
 `;
 
-exports[`block-component > formats case #sugar-syntax 1`] = `
+exports[`block-component > formats case "sugar-syntax" 1`] = `
 ":component
 "
 `;
 
-exports[`block-component > formats case #text 1`] = `
+exports[`block-component > formats case "text" 1`] = `
 "::component
 text
 ::
 "
 `;
 
-exports[`block-component > formats case #trim-slot-name 1`] = `
+exports[`block-component > formats case "trim-slot-name" 1`] = `
 "::component
 #slot
 slot content

@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`formats case #list1 1`] = `
+exports[`formats case "list1" 1`] = `
 "- This is a list item.
 
 ::container
@@ -9,7 +9,7 @@ exports[`formats case #list1 1`] = `
 "
 `;
 
-exports[`formats case #list2 1`] = `
+exports[`formats case "list2" 1`] = `
 "- This is a list item.
   ::container
   - This is a list item.
@@ -17,7 +17,7 @@ exports[`formats case #list2 1`] = `
 "
 `;
 
-exports[`formats case #list4 1`] = `
+exports[`formats case "list4" 1`] = `
 "::parent
 - This is a list item.
 
@@ -28,7 +28,7 @@ exports[`formats case #list4 1`] = `
 "
 `;
 
-exports[`formats case #list5 1`] = `
+exports[`formats case "list5" 1`] = `
 "- This is a list item.
   ::container
   - This is a list item.
@@ -36,7 +36,7 @@ exports[`formats case #list5 1`] = `
 "
 `;
 
-exports[`formats case #list6 1`] = `
+exports[`formats case "list6" 1`] = `
 "::parent
 - This is a list item.
   :::container
@@ -46,7 +46,7 @@ exports[`formats case #list6 1`] = `
 "
 `;
 
-exports[`formats case #list7 1`] = `
+exports[`formats case "list7" 1`] = `
 "- This is a list item.
   ::container
   - This is a list item.
@@ -54,7 +54,7 @@ exports[`formats case #list7 1`] = `
 "
 `;
 
-exports[`formats case #list8 1`] = `
+exports[`formats case "list8" 1`] = `
 "::page-section
 ---
 background-image:
@@ -69,7 +69,7 @@ color: red
 "
 `;
 
-exports[`formats case #list10 1`] = `
+exports[`formats case "list10" 1`] = `
 "---
 
 ## title: ""
@@ -130,7 +130,7 @@ color: red
 "
 `;
 
-exports[`formats case #list11 1`] = `
+exports[`formats case "list11" 1`] = `
 "::page-container
 ---
 simple-array:
@@ -167,7 +167,7 @@ attributes:
 "
 `;
 
-exports[`formats case #list12 1`] = `
+exports[`formats case "list12" 1`] = `
 "::page-section
 - This is a list item.
 
@@ -178,7 +178,7 @@ exports[`formats case #list12 1`] = `
 "
 `;
 
-exports[`formats case #nested1 1`] = `
+exports[`formats case "nested1" 1`] = `
 "::container
 ---
 background-color: "#eee"
@@ -193,7 +193,7 @@ Well
 "
 `;
 
-exports[`formats case #nested2 1`] = `
+exports[`formats case "nested2" 1`] = `
 "::container
 ---
 bi:

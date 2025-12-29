@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`codeblock-props > formats case #YamlProps 1`] = `
+exports[`codeblock-props > formats case "YamlProps" 1`] = `
 "::with-frontmatter-yaml
 \`\`\`yaml [props]
 array:
@@ -12,7 +12,7 @@ key: value
 "
 `;
 
-exports[`codeblock-props > formats case #nested-component-yamlProps 1`] = `
+exports[`codeblock-props > formats case "nested-component-yamlProps" 1`] = `
 "::with-frontmatter-and-nested-component-yaml
 \`\`\`yaml [props]
 array:
@@ -32,7 +32,7 @@ key: value
 "
 `;
 
-exports[`codeblock-props > formats case #notYamlProps 1`] = `
+exports[`codeblock-props > formats case "notYamlProps" 1`] = `
 "::with-frontmatter-yaml
 \`\`\`yaml
 key: value
@@ -44,7 +44,7 @@ array:
 "
 `;
 
-exports[`codeblock-props > formats case #notYamlProps2 1`] = `
+exports[`codeblock-props > formats case "notYamlProps2" 1`] = `
 "::with-frontmatter-yaml
 \`\`\`yaml[props]
 key: value
@@ -56,7 +56,7 @@ array:
 "
 `;
 
-exports[`codeblock-props > formats case #notYamlProps3 1`] = `
+exports[`codeblock-props > formats case "notYamlProps3" 1`] = `
 "::with-frontmatter-yaml
 \`\`\`yaml [yaml]
 key: value
@@ -68,7 +68,7 @@ array:
 "
 `;
 
-exports[`codeblock-props > formats case #shouldConvertYamlProps 1`] = `
+exports[`codeblock-props > formats case "shouldConvertYamlProps" 1`] = `
 "::with-frontmatter-yaml
 ---
 array:
@@ -80,7 +80,7 @@ key: value
 "
 `;
 
-exports[`codeblock-props > formats case #yamlProps1 1`] = `
+exports[`codeblock-props > formats case "yamlProps1" 1`] = `
 "::with-frontmatter-yaml1
 \`\`\`yaml [props]
 key: value

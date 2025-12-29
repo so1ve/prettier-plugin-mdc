@@ -1,66 +1,66 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`span > formats case #[ ] 1`] = `
+exports[`span > formats case "[ ]" 1`] = `
 ":span
 "
 `;
 
-exports[`span > formats case #[x] 1`] = `
+exports[`span > formats case "[x]" 1`] = `
 ":span[x]
 "
 `;
 
-exports[`span > formats case #complex _ 1`] = `
+exports[`span > formats case "complex _" 1`] = `
 ":span[span _span_ **span** \`span\`]
 "
 `;
 
-exports[`span > formats case #complex 1`] = `
+exports[`span > formats case "complex" 1`] = `
 ":span[span _span_ **span** \`span\`]{a="a" b="b"}
 "
 `;
 
-exports[`span > formats case #ignore-double-bracket 1`] = `
+exports[`span > formats case "ignore-double-bracket" 1`] = `
 "[[wikilink]]
 "
 `;
 
-exports[`span > formats case #ignored-bracket 1`] = `
+exports[`span > formats case "ignored-bracket" 1`] = `
 "[label]
 "
 `;
 
-exports[`span > formats case #inside-link-invalid 1`] = `
+exports[`span > formats case "inside-link-invalid" 1`] = `
 "[[span]](#href)
 "
 `;
 
-exports[`span > formats case #inside-link-valid 1`] = `
+exports[`span > formats case "inside-link-valid" 1`] = `
 "[
 
 :span[span]](#href)
 "
 `;
 
-exports[`span > formats case #respect-gfm-check-list 1`] = `
+exports[`span > formats case "respect-gfm-check-list" 1`] = `
 "- [ ] task 1
 - [x] task 2
 "
 `;
 
-exports[`span > formats case #respect-reference-style-link 1`] = `
+exports[`span > formats case "respect-reference-style-link" 1`] = `
 "[link][ref]
 
 [ref]: http://example.com
 "
 `;
 
-exports[`span > formats case #simple 1`] = `
+exports[`span > formats case "simple" 1`] = `
 ":span[span]
 "
 `;
 
-exports[`span > formats case #with-attributes 1`] = `
+exports[`span > formats case "with-attributes" 1`] = `
 ":span[span]{#theid .aclass .anotherclass .andother foo="bar"}
 "
 `;

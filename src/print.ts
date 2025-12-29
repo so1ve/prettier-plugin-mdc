@@ -11,27 +11,9 @@ import type {
   PrintFn,
   TextComponentNode,
 } from "./types";
-import { escapeQuotes, quoteString } from "./utils";
+import { quoteString, serializeValue } from "./utils";
 
 const { hardline, join } = doc.builders;
-
-const mapChildren = (path: AstPath<any>, print: PrintFn): Doc[] =>
-  path.map(print as any, "children");
-
-function serializeValue(value: unknown, options: Options): string {
-  if (typeof value === "string") {
-    return quoteString(value, options);
-  }
-  if (typeof value === "number" || typeof value === "boolean") {
-    return String(value);
-  }
-
-  // For objects/arrays, use JSON
-  const preferredQuote = options.singleQuote ? "'" : '"';
-  const escaped = escapeQuotes(JSON.stringify(value), preferredQuote);
-
-  return `${preferredQuote}${escaped}${preferredQuote}`;
-}
 
 export function printAttributes(
   { attributes }: NodeWithAttributes,
@@ -225,29 +207,43 @@ export function printContainerComponentWithYamlDoc(
   }
 
   if (node.children && node.children.length > 0) {
-    // Check if there's a blank line between rawData and first child in original input
+    const componentStartLine = node.position?.start.line ?? 0;
+
+    let prevEndLine: number;
     if (yamlDoc.length > 0 && node.rawData) {
-      const componentStartLine = node.position?.start.line ?? 0;
-      // rawData format: "\n<content>\n---"
-      // Count newlines in rawData to determine where it ends
       const rawDataNewlines = (node.rawData.match(/\n/g) ?? []).length;
-      // rawData block: starts at line after component opening, includes opening --- and closing ---
-      // Opening --- is on componentStartLine + 1
-      // rawData ends at componentStartLine + 1 + rawDataNewlines
-      const rawDataEndLine = componentStartLine + 1 + rawDataNewlines;
-
-      const firstChild = node.children[0] as {
-        position?: { start: { line: number } };
-      };
-      const firstChildLine = firstChild.position?.start.line ?? 0;
-
-      // If first child starts more than 1 line after rawData ends, there's a blank line
-      if (firstChildLine > rawDataEndLine + 1) {
-        parts.push(hardline);
-      }
+      prevEndLine = componentStartLine + 1 + rawDataNewlines;
+    } else {
+      prevEndLine = componentStartLine;
     }
-    const childDocs = mapChildren(path, print);
-    parts.push(join(hardline, childDocs));
+
+    // Print children, preserving at most one blank line between them
+    const childDocs: Doc[] = [];
+    for (let i = 0; i < node.children.length; i++) {
+      const child = node.children[i] as {
+        position?: { start: { line: number }; end: { line: number } };
+      };
+      const childStartLine = child.position?.start.line ?? 0;
+
+      if (i > 0) {
+        childDocs.push(hardline);
+        if (childStartLine > prevEndLine + 1) {
+          childDocs.push(hardline);
+        }
+      } else if (
+        yamlDoc.length > 0 &&
+        node.rawData &&
+        childStartLine > prevEndLine + 1
+      ) {
+        childDocs.push(hardline);
+      }
+
+      childDocs.push(path.call(print as any, "children", i));
+
+      prevEndLine = child.position?.end.line ?? prevEndLine;
+    }
+
+    parts.push(...childDocs);
     parts.push(hardline);
   }
 
@@ -272,7 +268,7 @@ export function printComponentContainerSection(
   }
 
   if (node.children && node.children.length > 0) {
-    const childDocs = mapChildren(path, print);
+    const childDocs: Doc[] = path.map(print as any, "children");
     parts.push(join(hardline, childDocs));
   }
 

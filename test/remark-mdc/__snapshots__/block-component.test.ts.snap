@@ -149,9 +149,11 @@ array:
 exports[`block-component > formats case "ignore-code-fence" 1`] = `
 "::component
 First line
+
 \`\`\`cpp
 #include <iostream>
 \`\`\`
+
 Second line
 ::
 
@@ -174,6 +176,7 @@ array:
   - itemKey: value
 ---
 Default slot
+
 #secondary-slot
 Secondary slot value
 :::hello
@@ -199,6 +202,7 @@ styles: |
   }
 ---
 This container has a code block.
+
 \`\`\`js
 function test() {
   console.log("test");
@@ -223,7 +227,9 @@ Hello
 #another-title
 World
 P1
+
 P2
+
 P
 ::
 "

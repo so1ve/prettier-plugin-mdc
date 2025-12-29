@@ -26,6 +26,7 @@ Hello World
 exports[`auto-unwrap > formats case "twoChildren" 1`] = `
 "::test
 Foo bar
+
 Hello World
 ::
 "
@@ -34,6 +35,7 @@ Hello World
 exports[`auto-unwrap > formats case "twoSlots" 1`] = `
 "::test
 Foo bar
+
 #title
 Hello World
 ::

@@ -44,3 +44,18 @@ export function quoteString(value: string, options: Options): string {
 
   return `${quote}${escaped}${quote}`;
 }
+
+export function serializeValue(value: unknown, options: Options): string {
+  if (typeof value === "string") {
+    return quoteString(value, options);
+  }
+  if (typeof value === "number" || typeof value === "boolean") {
+    return String(value);
+  }
+
+  // For objects/arrays, use JSON
+  const preferredQuote = options.singleQuote ? "'" : '"';
+  const escaped = escapeQuotes(JSON.stringify(value), preferredQuote);
+
+  return `${preferredQuote}${escaped}${preferredQuote}`;
+}

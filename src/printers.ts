@@ -41,7 +41,7 @@ function extractYamlContent(rawData: string | undefined): string | undefined {
   }
 
   // rawData starts with \n and ends with ---
-  const content = rawData.trimEnd().slice(1, -3).trimEnd();
+  const content = rawData.trimEnd().slice(1).replace(/\s-+$/, "").trimEnd();
 
   return content || undefined;
 }
@@ -69,7 +69,7 @@ export const printers: Record<typeof AST_FORMAT, Printer<Node>> = {
             yamlDoc = node.value;
           }
 
-          return ["---", hardline, yamlDoc, hardline, "---", hardline];
+          return ["---", hardline, yamlDoc, hardline, "---"];
         };
       }
 

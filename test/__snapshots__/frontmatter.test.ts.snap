@@ -5,7 +5,6 @@ exports[`frontmatter > formats case "basic" (dev) 1`] = `
 title: ""
 date: ""
 ---
-
 "
 `;
 
@@ -14,6 +13,59 @@ exports[`frontmatter > formats case "basic" 1`] = `
 title: ""
 date: ""
 ---
+"
+`;
 
+exports[`frontmatter > formats case "content1" (dev) 1`] = `
+"---
+title: ""
+---
+
+aa
+"
+`;
+
+exports[`frontmatter > formats case "content1" 1`] = `
+"---
+title: ""
+---
+
+aa
+"
+`;
+
+exports[`frontmatter > formats case "content2" (dev) 1`] = `
+"---
+title: ""
+---
+
+aa
+"
+`;
+
+exports[`frontmatter > formats case "content2" 1`] = `
+"---
+title: ""
+---
+
+aa
+"
+`;
+
+exports[`frontmatter > formats case "content3" (dev) 1`] = `
+"---
+title: ""
+---
+
+aa
+"
+`;
+
+exports[`frontmatter > formats case "content3" 1`] = `
+"---
+title: ""
+---
+
+aa
 "
 `;

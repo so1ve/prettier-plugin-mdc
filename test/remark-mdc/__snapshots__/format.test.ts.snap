@@ -144,7 +144,6 @@ title: ""
 description: ""
 ---
 
-
 ## This section contains a bunch of lists
 
 - This is a list item.
@@ -210,7 +209,6 @@ exports[`formats case "list10" 1`] = `
 title: ""
 description: ""
 ---
-
 
 ## This section contains a bunch of lists
 

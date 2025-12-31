@@ -11,5 +11,26 @@ describe("frontmatter", () => {
     date: ""
     ---
     `,
+    content1: dedent`
+    ---
+    title: ""
+    ---
+
+    aa
+    `,
+    content2: dedent`
+    ---
+    title: ""
+    ---
+    aa
+    `,
+    content3: dedent`
+    ---
+    title: ""
+    ---
+    aa
+
+
+    `,
   });
 });

@@ -69,3 +69,21 @@ title: ""
 aa
 "
 `;
+
+exports[`frontmatter > formats case "list" (dev) 1`] = `
+"---
+tags:
+  - tag1
+  - tag2
+---
+"
+`;
+
+exports[`frontmatter > formats case "list" 1`] = `
+"---
+tags:
+  - tag1
+  - tag2
+---
+"
+`;

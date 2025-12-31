@@ -32,5 +32,12 @@ describe("frontmatter", () => {
 
 
     `,
+    list: dedent`
+    ---
+    tags:
+      - tag1
+      - tag2
+    ---
+    `,
   });
 });

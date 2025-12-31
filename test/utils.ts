@@ -9,26 +9,23 @@ declare const __TEST_DEV__: boolean;
 
 export function runTests(cases: Record<string, string>) {
   for (const [name, markdown] of Object.entries(cases)) {
-    if (__TEST_DEV__) {
-      it(`formats case "${name}" (dev)`, async () => {
-        const formatted = await formatDev(markdown, {
-          plugins: [prettierPluginMdc],
-          filepath: "test.md",
-          parser: AST_FORMAT,
-        });
-
-        expect(formatted).toMatchSnapshot();
+    it.runIf(__TEST_DEV__)(`formats case "${name}" (dev)`, async () => {
+      const formatted = await formatDev(markdown, {
+        plugins: [prettierPluginMdc],
+        filepath: "test.md",
+        parser: AST_FORMAT,
       });
-    } else {
-      it(`formats case "${name}"`, async () => {
-        const formatted = await format(markdown, {
-          plugins: [prettierPluginMdc],
-          filepath: "test.md",
-          parser: AST_FORMAT,
-        });
 
-        expect(formatted).toMatchSnapshot();
+      expect(formatted).toMatchSnapshot();
+    });
+    it.runIf(!__TEST_DEV__)(`formats case "${name}"`, async () => {
+      const formatted = await format(markdown, {
+        plugins: [prettierPluginMdc],
+        filepath: "test.md",
+        parser: AST_FORMAT,
       });
-    }
+
+      expect(formatted).toMatchSnapshot();
+    });
   }
 }

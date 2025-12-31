@@ -51,7 +51,7 @@ exports[`span > formats case "ignore-double-bracket" 1`] = `
 `;
 
 exports[`span > formats case "ignored-bracket" (dev) 1`] = `
-"[label]
+"\\[label]
 "
 `;
 

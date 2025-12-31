@@ -15,7 +15,8 @@ const a = 1;
 `;
 
 exports[`markdown > formats case "heading" (dev) 1`] = `
-"## Hello World
+"Hello World
+---
 
 # aasdf
 "
@@ -25,5 +26,25 @@ exports[`markdown > formats case "heading" 1`] = `
 "## Hello World
 
 # aasdf
+"
+`;
+
+exports[`markdown > formats case "setext-heading" (dev) 1`] = `
+"Hello World
+====
+
+aa
+---
+
+bb
+"
+`;
+
+exports[`markdown > formats case "setext-heading" 1`] = `
+"# Hello World
+
+## aa
+
+bb
 "
 `;

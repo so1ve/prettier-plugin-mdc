@@ -11,6 +11,15 @@ describe("markdown", () => {
 
     #   aasdf
     `,
+    "setext-heading": dedent`
+    Hello World
+    ====
+
+    aa
+    ---
+
+    bb
+    `,
     "embed": dedent`
     \`\`\`js
     const a    =   1

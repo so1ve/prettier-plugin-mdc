@@ -1,5 +1,17 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`codeblock-props > formats case "YamlProps" (dev) 1`] = `
+"::with-frontmatter-yaml
+\`\`\`yaml [props]
+array:
+  - item
+  - itemKey: value
+key: value
+\`\`\`
+::
+"
+`;
+
 exports[`codeblock-props > formats case "YamlProps" 1`] = `
 "::with-frontmatter-yaml
 \`\`\`yaml [props]
@@ -8,6 +20,27 @@ array:
   - itemKey: value
 key: value
 \`\`\`
+::
+"
+`;
+
+exports[`codeblock-props > formats case "nested-component-yamlProps" (dev) 1`] = `
+"::with-frontmatter-and-nested-component-yaml
+\`\`\`yaml [props]
+array:
+  - item
+  - itemKey: value
+key: value
+\`\`\`
+Default slot
+
+#secondary-slot
+Secondary slot value
+:::hello
+\`\`\`yaml [props]
+key: value
+\`\`\`
+:::
 ::
 "
 `;
@@ -33,9 +66,33 @@ key: value
 "
 `;
 
+exports[`codeblock-props > formats case "notYamlProps" (dev) 1`] = `
+"::with-frontmatter-yaml
+\`\`\`yaml
+key: value
+array:
+  - item
+  - itemKey: value
+\`\`\`
+::
+"
+`;
+
 exports[`codeblock-props > formats case "notYamlProps" 1`] = `
 "::with-frontmatter-yaml
 \`\`\`yaml
+key: value
+array:
+  - item
+  - itemKey: value
+\`\`\`
+::
+"
+`;
+
+exports[`codeblock-props > formats case "notYamlProps2" (dev) 1`] = `
+"::with-frontmatter-yaml
+\`\`\`yaml[props]
 key: value
 array:
   - item
@@ -57,6 +114,18 @@ array:
 "
 `;
 
+exports[`codeblock-props > formats case "notYamlProps3" (dev) 1`] = `
+"::with-frontmatter-yaml
+\`\`\`yaml [yaml]
+key: value
+array:
+  - item
+  - itemKey: value
+\`\`\`
+::
+"
+`;
+
 exports[`codeblock-props > formats case "notYamlProps3" 1`] = `
 "::with-frontmatter-yaml
 \`\`\`yaml [yaml]
@@ -69,6 +138,18 @@ array:
 "
 `;
 
+exports[`codeblock-props > formats case "shouldConvertYamlProps" (dev) 1`] = `
+"::with-frontmatter-yaml
+---
+array:
+  - item
+  - itemKey: value
+key: value
+---
+::
+"
+`;
+
 exports[`codeblock-props > formats case "shouldConvertYamlProps" 1`] = `
 "::with-frontmatter-yaml
 ---
@@ -77,6 +158,21 @@ array:
   - itemKey: value
 key: value
 ---
+::
+"
+`;
+
+exports[`codeblock-props > formats case "yamlProps1" (dev) 1`] = `
+"::with-frontmatter-yaml1
+\`\`\`yaml [props]
+key: value
+key2:
+  subkey: value
+  subkey2: value
+array:
+  - item
+  - itemKey: value
+\`\`\`
 ::
 "
 `;

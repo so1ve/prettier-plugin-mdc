@@ -16,6 +16,11 @@ export type NodeWithAttributes = Node & {
   attributes?: Attributes;
 };
 
+export type YamlNode = Node & {
+  type: "yaml";
+  value: string;
+};
+
 export type ContainerComponentNode = Parent & {
   type: "containerComponent";
   name: string;

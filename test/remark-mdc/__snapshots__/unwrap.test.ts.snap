@@ -1,5 +1,13 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`auto-unwrap > formats case "componentChildren" (dev) 1`] = `
+"::test
+:::another-component
+:::
+::
+"
+`;
+
 exports[`auto-unwrap > formats case "componentChildren" 1`] = `
 "::test
 :::another-component
@@ -8,8 +16,23 @@ exports[`auto-unwrap > formats case "componentChildren" 1`] = `
 "
 `;
 
+exports[`auto-unwrap > formats case "simple" (dev) 1`] = `
+"::test
+Hello World
+::
+"
+`;
+
 exports[`auto-unwrap > formats case "simple" 1`] = `
 "::test
+Hello World
+::
+"
+`;
+
+exports[`auto-unwrap > formats case "slot" (dev) 1`] = `
+"::test
+#title
 Hello World
 ::
 "
@@ -23,10 +46,29 @@ Hello World
 "
 `;
 
+exports[`auto-unwrap > formats case "twoChildren" (dev) 1`] = `
+"::test
+Foo bar
+
+Hello World
+::
+"
+`;
+
 exports[`auto-unwrap > formats case "twoChildren" 1`] = `
 "::test
 Foo bar
 
+Hello World
+::
+"
+`;
+
+exports[`auto-unwrap > formats case "twoSlots" (dev) 1`] = `
+"::test
+Foo bar
+
+#title
 Hello World
 ::
 "

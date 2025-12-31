@@ -50,11 +50,14 @@
   "dependencies": {
     "@types/mdast": "^4.0.4",
     "@types/unist": "^3.0.3",
-    "remark-gfm": "^4.0.1",
-    "remark-math": "^6.0.0",
-    "remark-mdc": "^3.10.0",
-    "remark-parse": "^11.0.0",
-    "unified": "^11.0.5"
+    "mdast-util-from-markdown": "^2.0.2",
+    "mdast-util-frontmatter": "^2.0.1",
+    "mdast-util-gfm": "^3.1.0",
+    "mdast-util-math": "^3.0.0",
+    "micromark-extension-frontmatter": "^2.0.0",
+    "micromark-extension-gfm": "^3.0.0",
+    "micromark-extension-math": "^3.1.0",
+    "remark-mdc": "^3.10.0"
   },
   "devDependencies": {
     "@antfu/ni": "^28.0.0",
@@ -66,6 +69,7 @@
     "dedent": "^1.7.1",
     "eslint": "^9.39.2",
     "prettier": "^3.7.4",
+    "prettier-dev": "https://pkg.pr.new/prettier@c54b26c",
     "tsdown": "^0.18.3",
     "typescript": "^5.9.3",
     "vite": "^7.3.0",

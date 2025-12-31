@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`markdown > formats case "heading" (dev) 1`] = `
+"## Hello World
+
+# aasdf
+"
+`;
+
+exports[`markdown > formats case "heading" 1`] = `
+"## Hello World
+
+# aasdf
+"
+`;

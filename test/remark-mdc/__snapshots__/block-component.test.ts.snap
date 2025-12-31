@@ -1,12 +1,30 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`block-component > formats case "component-attributes" (dev) 1`] = `
+"::component{key="value"}
+::
+"
+`;
+
 exports[`block-component > formats case "component-attributes" 1`] = `
 "::component{key="value"}
 ::
 "
 `;
 
+exports[`block-component > formats case "component-attributes-array-convert-double-quote" (dev) 1`] = `
+"::container-component{:items="[1,2,3.5]"}
+::
+"
+`;
+
 exports[`block-component > formats case "component-attributes-array-convert-double-quote" 1`] = `
+"::container-component{:items="[1,2,3.5]"}
+::
+"
+`;
+
+exports[`block-component > formats case "component-attributes-array-of-number" (dev) 1`] = `
 "::container-component{:items="[1,2,3.5]"}
 ::
 "
@@ -18,8 +36,20 @@ exports[`block-component > formats case "component-attributes-array-of-number" 1
 "
 `;
 
+exports[`block-component > formats case "component-attributes-array-of-string" (dev) 1`] = `
+"::container-component{:items='["Nuxt", "Vue"]'}
+::
+"
+`;
+
 exports[`block-component > formats case "component-attributes-array-of-string" 1`] = `
 "::container-component{:items='["Nuxt", "Vue"]'}
+::
+"
+`;
+
+exports[`block-component > formats case "component-attributes-bad-array" (dev) 1`] = `
+"::container-component{:items="[Nuxt,Vue]"}
 ::
 "
 `;
@@ -30,8 +60,20 @@ exports[`block-component > formats case "component-attributes-bad-array" 1`] = `
 "
 `;
 
+exports[`block-component > formats case "component-attributes-bind-frontmatter" (dev) 1`] = `
+"::text-component{:key="value"}
+::
+"
+`;
+
 exports[`block-component > formats case "component-attributes-bind-frontmatter" 1`] = `
 "::text-component{:key="value"}
+::
+"
+`;
+
+exports[`block-component > formats case "component-attributes-length-80" (dev) 1`] = `
+"::component{a="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
 ::
 "
 `;
@@ -42,8 +84,20 @@ exports[`block-component > formats case "component-attributes-length-80" 1`] = `
 "
 `;
 
+exports[`block-component > formats case "component-attributes-length-81" (dev) 1`] = `
+"::component{a="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
+::
+"
+`;
+
 exports[`block-component > formats case "component-attributes-length-81" 1`] = `
 "::component{a="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}
+::
+"
+`;
+
+exports[`block-component > formats case "component-attributes-object" (dev) 1`] = `
+"::container-component{:items='{"key": "value"}'}
 ::
 "
 `;
@@ -54,8 +108,27 @@ exports[`block-component > formats case "component-attributes-object" 1`] = `
 "
 `;
 
+exports[`block-component > formats case "component-attributes-remove-duplicate" (dev) 1`] = `
+"::component{key="value"}
+::
+"
+`;
+
 exports[`block-component > formats case "component-attributes-remove-duplicate" 1`] = `
 "::component{key="value"}
+::
+"
+`;
+
+exports[`block-component > formats case "component-hProperties-be-the-same" (dev) 1`] = `
+"::container-component{:items='{"key":"value"}'}
+::
+
+::container-component
+---
+items:
+  key: value
+---
 ::
 "
 `;
@@ -73,11 +146,28 @@ items:
 "
 `;
 
+exports[`block-component > formats case "dangling-list" (dev) 1`] = `
+"::component
+- list item
+- list item
+#slot
+slot content
+::
+"
+`;
+
 exports[`block-component > formats case "dangling-list" 1`] = `
 "::component
 - list item
 - list item
 #slot
+slot content
+::
+"
+`;
+
+exports[`block-component > formats case "default-slot-attributes" (dev) 1`] = `
+"::container-component
 slot content
 ::
 "
@@ -90,8 +180,22 @@ slot content
 "
 `;
 
+exports[`block-component > formats case "empty" (dev) 1`] = `
+"::component
+::
+"
+`;
+
 exports[`block-component > formats case "empty" 1`] = `
 "::component
+::
+"
+`;
+
+exports[`block-component > formats case "empty-slot" (dev) 1`] = `
+"::component
+#text
+
 ::
 "
 `;
@@ -104,6 +208,18 @@ exports[`block-component > formats case "empty-slot" 1`] = `
 "
 `;
 
+exports[`block-component > formats case "frontmatter" (dev) 1`] = `
+"::with-frontmatter
+---
+key: value
+array:
+  - item
+  - itemKey: value
+---
+::
+"
+`;
+
 exports[`block-component > formats case "frontmatter" 1`] = `
 "::with-frontmatter
 ---
@@ -111,6 +227,21 @@ key: value
 array:
   - item
   - itemKey: value
+---
+::
+"
+`;
+
+exports[`block-component > formats case "frontmatter-with-binding-variables" (dev) 1`] = `
+"::with-frontmatter
+---
+:key: value
+array:
+  - item
+  - :itemKey: value
+object:
+  :subkey: value
+  subkey2: value
 ---
 ::
 "
@@ -131,6 +262,21 @@ object:
 "
 `;
 
+exports[`block-component > formats case "frontmatter1" (dev) 1`] = `
+"::with-frontmatter
+---
+key: value
+key2:
+  subkey: value
+  subkey2: value
+array:
+  - item
+  - itemKey: value
+---
+::
+"
+`;
+
 exports[`block-component > formats case "frontmatter1" 1`] = `
 "::with-frontmatter
 ---
@@ -143,6 +289,21 @@ array:
   - itemKey: value
 ---
 ::
+"
+`;
+
+exports[`block-component > formats case "ignore-code-fence" (dev) 1`] = `
+"::component
+First line
+
+\`\`\`cpp
+#include <iostream>
+\`\`\`
+
+Second line
+::
+
+Third line
 "
 `;
 
@@ -161,8 +322,35 @@ Third line
 "
 `;
 
+exports[`block-component > formats case "jsonScapeAttr" (dev) 1`] = `
+"::foo{:test="{\\"foo\\":\\"I'd love to\\"}"}
+::
+"
+`;
+
 exports[`block-component > formats case "jsonScapeAttr" 1`] = `
 "::foo{:test="{\\"foo\\":\\"I'd love to\\"}"}
+::
+"
+`;
+
+exports[`block-component > formats case "nested-component" (dev) 1`] = `
+"::with-frontmatter-and-nested-component
+---
+key: value
+array:
+  - item
+  - itemKey: value
+---
+Default slot
+
+#secondary-slot
+Secondary slot value
+:::hello
+---
+key: value
+---
+:::
 ::
 "
 `;
@@ -183,6 +371,31 @@ Secondary slot value
 ---
 key: value
 ---
+:::
+::
+"
+`;
+
+exports[`block-component > formats case "nested-empty-line" (dev) 1`] = `
+"::container{padding="0px"}
+:::container
+---
+styles: |
+  pre {
+    border: 1px solid red !important;
+
+    span {
+      line-height: 1;
+    }
+  }
+---
+This container has a code block.
+
+\`\`\`js
+function test() {
+  console.log("test");
+}
+\`\`\`
 :::
 ::
 "
@@ -213,9 +426,31 @@ function test() {
 "
 `;
 
+exports[`block-component > formats case "paragraphWithComponents" (dev) 1`] = `
+"::test
+Hello world :this is a **test**, with _different_ **styles** and a [link](https://nuxtjs.org){target="_blank"}
+::
+"
+`;
+
 exports[`block-component > formats case "paragraphWithComponents" 1`] = `
 "::test
 Hello world :this is a **test**, with _different_ **styles** and a [link](https://nuxtjs.org){target="_blank"}
+::
+"
+`;
+
+exports[`block-component > formats case "section-order" (dev) 1`] = `
+"::comp
+#title
+Hello
+#another-title
+World
+P1
+
+P2
+
+P
 ::
 "
 `;
@@ -235,6 +470,19 @@ P
 "
 `;
 
+exports[`block-component > formats case "section-order-2" (dev) 1`] = `
+"::comp
+#a
+A
+#c
+C
+#b
+B
+P1
+::
+"
+`;
+
 exports[`block-component > formats case "section-order-2" 1`] = `
 "::comp
 #a
@@ -248,6 +496,14 @@ P1
 "
 `;
 
+exports[`block-component > formats case "slot-attributes" (dev) 1`] = `
+"::container-component
+#slot
+slot content
+::
+"
+`;
+
 exports[`block-component > formats case "slot-attributes" 1`] = `
 "::container-component
 #slot
@@ -256,14 +512,34 @@ slot content
 "
 `;
 
+exports[`block-component > formats case "sugar-syntax" (dev) 1`] = `
+":component
+"
+`;
+
 exports[`block-component > formats case "sugar-syntax" 1`] = `
 ":component
+"
+`;
+
+exports[`block-component > formats case "text" (dev) 1`] = `
+"::component
+text
+::
 "
 `;
 
 exports[`block-component > formats case "text" 1`] = `
 "::component
 text
+::
+"
+`;
+
+exports[`block-component > formats case "trim-slot-name" (dev) 1`] = `
+"::component
+#slot
+slot content
 ::
 "
 `;

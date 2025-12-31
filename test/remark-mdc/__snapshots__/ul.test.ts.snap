@@ -1,6 +1,22 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`ul > formats case "mixed" (dev) 1`] = `
+"- item 1
+- item 2
+  - item 3
+- item 4
+"
+`;
+
 exports[`ul > formats case "mixed" 1`] = `
+"- item 1
+- item 2
+  - item 3
+- item 4
+"
+`;
+
+exports[`ul > formats case "mixed2" (dev) 1`] = `
 "- item 1
 - item 2
   - item 3
@@ -16,7 +32,23 @@ exports[`ul > formats case "mixed2" 1`] = `
 "
 `;
 
+exports[`ul > formats case "mixed3" (dev) 1`] = `
+"- item 1
+- item 2
+  - item 3
+- item 4
+"
+`;
+
 exports[`ul > formats case "mixed3" 1`] = `
+"- item 1
+- item 2
+  - item 3
+- item 4
+"
+`;
+
+exports[`ul > formats case "mixed4" (dev) 1`] = `
 "- item 1
 - item 2
   - item 3
@@ -32,6 +64,13 @@ exports[`ul > formats case "mixed4" 1`] = `
 "
 `;
 
+exports[`ul > formats case "mixed5" (dev) 1`] = `
+"- This is a list item.
+  - This is a CHILD list item.
+    - This is a GRANDCHILD list item.
+"
+`;
+
 exports[`ul > formats case "mixed5" 1`] = `
 "- This is a list item.
   - This is a CHILD list item.
@@ -39,10 +78,24 @@ exports[`ul > formats case "mixed5" 1`] = `
 "
 `;
 
+exports[`ul > formats case "nested" (dev) 1`] = `
+"- item 1
+  - item 2
+  - item 3
+"
+`;
+
 exports[`ul > formats case "nested" 1`] = `
 "- item 1
   - item 2
   - item 3
+"
+`;
+
+exports[`ul > formats case "simple" (dev) 1`] = `
+"- item 1
+- item 2
+- item 3
 "
 `;
 

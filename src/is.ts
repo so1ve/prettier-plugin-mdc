@@ -6,6 +6,7 @@ import type {
   LinkNode,
   TextComponentNode,
   WordOrTextNode,
+  YamlNode,
 } from "./types";
 
 export const isTextComponentNode = (node: Node): node is TextComponentNode =>
@@ -25,6 +26,9 @@ export const isLinkNode = (node: Node): node is LinkNode =>
 
 export const isWordOrTextNode = (node: Node): node is WordOrTextNode =>
   node.type === "word" || node.type === "text";
+
+export const isYamlNode = (node: Node): node is YamlNode =>
+  node.type === "yaml";
 
 /**
  * Check if a node has any textComponent descendants

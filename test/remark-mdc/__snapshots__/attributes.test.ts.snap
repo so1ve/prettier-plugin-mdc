@@ -1,7 +1,17 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`Attributes > formats case "# in class" (dev) 1`] = `
+"\`code\`{#id .bg-[#E74249]}
+"
+`;
+
 exports[`Attributes > formats case "# in class" 1`] = `
 "\`code\`{#id .bg-[#E74249]}
+"
+`;
+
+exports[`Attributes > formats case "boolean" (dev) 1`] = `
+":test{prop} text
 "
 `;
 
@@ -10,8 +20,18 @@ exports[`Attributes > formats case "boolean" 1`] = `
 "
 `;
 
+exports[`Attributes > formats case "class-suger" (dev) 1`] = `
+":test{.class .another-class key="value"} text
+"
+`;
+
 exports[`Attributes > formats case "class-suger" 1`] = `
 ":test{.class .another-class key="value"} text
+"
+`;
+
+exports[`Attributes > formats case "code" (dev) 1`] = `
+"\`code\`{#id .class}
 "
 `;
 
@@ -20,8 +40,18 @@ exports[`Attributes > formats case "code" 1`] = `
 "
 `;
 
+exports[`Attributes > formats case "emphasis" (dev) 1`] = `
+"_emphasis_{#id .class}
+"
+`;
+
 exports[`Attributes > formats case "emphasis" 1`] = `
 "_emphasis_{#id .class}
+"
+`;
+
+exports[`Attributes > formats case "fragment-attribute" (dev) 1`] = `
+"[![Nuxt](https://nuxtjs.org/design-kit/colored-logo.svg){.nest}](https:test){.cls}
 "
 `;
 
@@ -30,7 +60,17 @@ exports[`Attributes > formats case "fragment-attribute" 1`] = `
 "
 `;
 
+exports[`Attributes > formats case "html-characters" (dev) 1`] = `
+":test{icon="©"} text
+"
+`;
+
 exports[`Attributes > formats case "html-characters" 1`] = `
+":test{icon="©"} text
+"
+`;
+
+exports[`Attributes > formats case "html-characters-unquoted" (dev) 1`] = `
 ":test{icon="©"} text
 "
 `;
@@ -40,13 +80,32 @@ exports[`Attributes > formats case "html-characters-unquoted" 1`] = `
 "
 `;
 
+exports[`Attributes > formats case "id-suger" (dev) 1`] = `
+":test{#id} text
+"
+`;
+
 exports[`Attributes > formats case "id-suger" 1`] = `
 ":test{#id} text
 "
 `;
 
+exports[`Attributes > formats case "ignoreEscapeCharacterInNormalAttribute" (dev) 1`] = `
+":copy{code="D:\\\\Software\\\\"}
+"
+`;
+
 exports[`Attributes > formats case "ignoreEscapeCharacterInNormalAttribute" 1`] = `
 ":copy{code="D:\\\\Software\\\\"}
+"
+`;
+
+exports[`Attributes > formats case "ignoreEscapeCharacterInNormalAttributeYaml" (dev) 1`] = `
+"::copy
+---
+code: D:\\Software\\
+---
+::
 "
 `;
 
@@ -59,8 +118,18 @@ code: D:\\Software\\
 "
 `;
 
+exports[`Attributes > formats case "image" (dev) 1`] = `
+"![Nuxt](https://nuxtjs.org/design-kit/colored-logo.svg){#id .class}
+"
+`;
+
 exports[`Attributes > formats case "image" 1`] = `
 "![Nuxt](https://nuxtjs.org/design-kit/colored-logo.svg){#id .class}
+"
+`;
+
+exports[`Attributes > formats case "invalid-binding" (dev) 1`] = `
+":test{:} text
 "
 `;
 
@@ -69,8 +138,20 @@ exports[`Attributes > formats case "invalid-binding" 1`] = `
 "
 `;
 
+exports[`Attributes > formats case "link" (dev) 1`] = `
+"[Nuxt](https://nuxtjs.org){#id .class}
+"
+`;
+
 exports[`Attributes > formats case "link" 1`] = `
 "[Nuxt](https://nuxtjs.org){#id .class}
+"
+`;
+
+exports[`Attributes > formats case "linkReference" (dev) 1`] = `
+"[Nuxt][nuxt]{#id .class}
+
+[nuxt]: https://nuxt.com
 "
 `;
 
@@ -81,8 +162,20 @@ exports[`Attributes > formats case "linkReference" 1`] = `
 "
 `;
 
+exports[`Attributes > formats case "nested" (dev) 1`] = `
+"[Hello [World]{.x}](/world){style="color: green"}
+"
+`;
+
 exports[`Attributes > formats case "nested" 1`] = `
 "[Hello [World]{.x}](/world){style="color: green"}
+"
+`;
+
+exports[`Attributes > formats case "nested-in-table" (dev) 1`] = `
+"| Col1 | Col2           |
+| ---- | -------------- |
+| aa   | [a](/a){a="a"} |
 "
 `;
 
@@ -93,8 +186,18 @@ exports[`Attributes > formats case "nested-in-table" 1`] = `
 "
 `;
 
+exports[`Attributes > formats case "nested2" (dev) 1`] = `
+"[Hello [World](/world){.x}]{style="color: green"}
+"
+`;
+
 exports[`Attributes > formats case "nested2" 1`] = `
 "[Hello [World](/world){.x}]{style="color: green"}
+"
+`;
+
+exports[`Attributes > formats case "nested3" (dev) 1`] = `
+"_**[Nuxt](https://nuxtjs.org){#id .class} strong**{#id2 .class2} emphasis_{#id3 .class3}
 "
 `;
 
@@ -103,8 +206,18 @@ exports[`Attributes > formats case "nested3" 1`] = `
 "
 `;
 
+exports[`Attributes > formats case "strong" (dev) 1`] = `
+"**strong**{#id .class}
+"
+`;
+
 exports[`Attributes > formats case "strong" 1`] = `
 "**strong**{#id .class}
+"
+`;
+
+exports[`Attributes > formats case "value-with-space" (dev) 1`] = `
+":test{attr="value"} text
 "
 `;
 

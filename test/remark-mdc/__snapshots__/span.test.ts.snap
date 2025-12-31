@@ -1,7 +1,17 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`span > formats case "[ ]" (dev) 1`] = `
+"[]
+"
+`;
+
 exports[`span > formats case "[ ]" 1`] = `
 "[]
+"
+`;
+
+exports[`span > formats case "[x]" (dev) 1`] = `
+"[x]
 "
 `;
 
@@ -10,8 +20,18 @@ exports[`span > formats case "[x]" 1`] = `
 "
 `;
 
+exports[`span > formats case "complex _" (dev) 1`] = `
+"[span _span_ **span** \`span\`]
+"
+`;
+
 exports[`span > formats case "complex _" 1`] = `
 "[span _span_ **span** \`span\`]
+"
+`;
+
+exports[`span > formats case "complex" (dev) 1`] = `
+"[span _span_ **span** \`span\`]{a="a" b="b"}
 "
 `;
 
@@ -20,8 +40,18 @@ exports[`span > formats case "complex" 1`] = `
 "
 `;
 
+exports[`span > formats case "ignore-double-bracket" (dev) 1`] = `
+"[[wikilink]]
+"
+`;
+
 exports[`span > formats case "ignore-double-bracket" 1`] = `
 "[[wikilink]]
+"
+`;
+
+exports[`span > formats case "ignored-bracket" (dev) 1`] = `
+"[label]
 "
 `;
 
@@ -30,8 +60,18 @@ exports[`span > formats case "ignored-bracket" 1`] = `
 "
 `;
 
+exports[`span > formats case "inside-link-invalid" (dev) 1`] = `
+"[\\[span\\]](#href)
+"
+`;
+
 exports[`span > formats case "inside-link-invalid" 1`] = `
 "[\\[span\\]](#href)
+"
+`;
+
+exports[`span > formats case "inside-link-valid" (dev) 1`] = `
+"[ [span]](#href)
 "
 `;
 
@@ -40,9 +80,22 @@ exports[`span > formats case "inside-link-valid" 1`] = `
 "
 `;
 
+exports[`span > formats case "respect-gfm-check-list" (dev) 1`] = `
+"- [ ] task 1
+- [x] task 2
+"
+`;
+
 exports[`span > formats case "respect-gfm-check-list" 1`] = `
 "- [ ] task 1
 - [x] task 2
+"
+`;
+
+exports[`span > formats case "respect-reference-style-link" (dev) 1`] = `
+"[link][ref]
+
+[ref]: http://example.com
 "
 `;
 
@@ -53,8 +106,18 @@ exports[`span > formats case "respect-reference-style-link" 1`] = `
 "
 `;
 
+exports[`span > formats case "simple" (dev) 1`] = `
+"[span]
+"
+`;
+
 exports[`span > formats case "simple" 1`] = `
 "[span]
+"
+`;
+
+exports[`span > formats case "with-attributes" (dev) 1`] = `
+"[span]{#theid .aclass .anotherclass .andother foo="bar"}
 "
 `;
 

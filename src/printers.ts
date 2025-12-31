@@ -9,6 +9,7 @@ import {
   isContainerComponentNode,
   isLinkNode,
   isTextComponentNode,
+  isYamlNode,
   linkNeedsCustomPrinting,
 } from "./is";
 import {
@@ -58,6 +59,20 @@ export const printers: Record<typeof AST_FORMAT, Printer<Node>> = {
     embed(path) {
       const { node } = path;
 
+      // frontmatter
+      if (isYamlNode(node)) {
+        return async (textToDoc): Promise<Doc> => {
+          let yamlDoc: Doc;
+          try {
+            yamlDoc = await textToDoc(node.value, { parser: "yaml" });
+          } catch {
+            yamlDoc = node.value;
+          }
+
+          return ["---", hardline, yamlDoc, hardline, "---", hardline];
+        };
+      }
+
       if (isContainerComponentNode(node) && node.rawData) {
         const yamlContent = extractYamlContent(node.rawData);
         if (yamlContent) {
@@ -81,7 +96,7 @@ export const printers: Record<typeof AST_FORMAT, Printer<Node>> = {
 
       return null;
     },
-    print(path, options, print, args) {
+    print(path, options, print) {
       const { node } = path;
 
       // Link with textComponent children needs custom printing
@@ -92,7 +107,7 @@ export const printers: Record<typeof AST_FORMAT, Printer<Node>> = {
 
       if (extendedInlineNodesHaveAttributes(node)) {
         // Let the markdown printer handle the node first, then add attributes
-        const printed = mdastPrinter.print(path, options, print, args);
+        const printed = mdastPrinter.print(path, options, print);
 
         return [printed, printAttributes(node, options)];
       }
@@ -119,7 +134,7 @@ export const printers: Record<typeof AST_FORMAT, Printer<Node>> = {
         );
       }
 
-      return mdastPrinter.print(path, options, print, args);
+      return mdastPrinter.print(path, options, print);
     },
   } as Printer<Node>,
 };

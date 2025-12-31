@@ -1,5 +1,10 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`inline-component > formats case "dummy-props" (dev) 1`] = `
+"How to say :hello{}-world in Markdown
+"
+`;
+
 exports[`inline-component > formats case "dummy-props" 1`] = `
 "How to say :hello{}-world in Markdown
 "

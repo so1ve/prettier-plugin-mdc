@@ -1,5 +1,19 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`markdown > formats case "embed" (dev) 1`] = `
+"\`\`\`js
+const a = 1;
+\`\`\`
+"
+`;
+
+exports[`markdown > formats case "embed" 1`] = `
+"\`\`\`js
+const a = 1;
+\`\`\`
+"
+`;
+
 exports[`markdown > formats case "heading" (dev) 1`] = `
 "## Hello World
 

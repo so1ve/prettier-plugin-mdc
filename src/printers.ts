@@ -56,7 +56,7 @@ export const printers: Record<typeof AST_FORMAT, Printer<Node>> = {
 
       return mdastPrinter.getVisitorKeys!(node, nonTraversableKeys);
     },
-    embed(path) {
+    embed(path, options) {
       const { node } = path;
 
       // frontmatter
@@ -64,7 +64,10 @@ export const printers: Record<typeof AST_FORMAT, Printer<Node>> = {
         return async (textToDoc): Promise<Doc> => {
           let yamlDoc: Doc;
           try {
-            yamlDoc = await textToDoc(node.value, { parser: "yaml" });
+            yamlDoc = await textToDoc(node.value, {
+              ...options,
+              parser: "yaml",
+            });
           } catch {
             yamlDoc = node.value;
           }
@@ -79,7 +82,10 @@ export const printers: Record<typeof AST_FORMAT, Printer<Node>> = {
           return async (textToDoc, print, _path, options): Promise<Doc> => {
             let yamlDoc: Doc;
             try {
-              yamlDoc = await textToDoc(yamlContent, { parser: "yaml" });
+              yamlDoc = await textToDoc(yamlContent, {
+                ...options,
+                parser: "yaml",
+              });
             } catch {
               yamlDoc = yamlContent;
             }
@@ -94,7 +100,7 @@ export const printers: Record<typeof AST_FORMAT, Printer<Node>> = {
         }
       }
 
-      return null;
+      return mdastPrinter.embed!(path, options);
     },
     print(path, options, print) {
       const { node } = path;

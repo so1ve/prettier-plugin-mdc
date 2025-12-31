@@ -5,11 +5,16 @@ import { runTests } from "./utils";
 
 describe("markdown", () => {
   runTests({
-    heading: dedent`
+    "heading": dedent`
     Hello World
     ---
 
     #   aasdf
+    `,
+    "embed": dedent`
+    \`\`\`js
+    const a    =   1
+    \`\`\`
     `,
   });
 });
